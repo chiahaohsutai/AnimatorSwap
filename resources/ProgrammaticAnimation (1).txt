@@ -1,0 +1,42 @@
+canvas 800 800
+rectangle name background min-x 0 min-y 0 width 800 height 800 color 0.7333 0.37 0.976 from 1 to 4000
+rectangle name B0  min-x 00 min-y 424 width 100 height 326 color 0 0.0 0 from 1 to 4000
+rectangle name B1  min-x 10 min-y 424 width 100 height 326 color 0 0.1 0 from 1 to 4000
+rectangle name B2  min-x 20 min-y 424 width 100 height 326 color 0 0.2 0 from 1 to 4000
+rectangle name B3  min-x 30 min-y 424 width 100 height 326 color 0 0.3 0 from 1 to 4000
+rectangle name B4  min-x 40 min-y 424 width 100 height 326 color 0 0.4 0 from 1 to 4000
+rectangle name B5  min-x 50 min-y 424 width 100 height 326 color 0 0.5 0 from 1 to 4000
+rectangle name B6  min-x 60 min-y 424 width 100 height 326 color 0 0.6 0 from 1 to 4000
+rectangle name B7  min-x 70 min-y 424 width 100 height 326 color 0 0.7 0 from 1 to 4000
+move name B0 moveto 100.0 00.0 200.0 00.0 from 500 to 2000
+move name B1 moveto 100.0 50.0 200.0 10.0 from 500 to 2000
+move name B2 moveto 100.0 100.0 200.0 20.0 from 500 to 2000
+move name B3 moveto 100.0 150.0 200.0 30.0 from 500 to 2000
+move name B4 moveto 100.0 200.0 200.0 40.0 from 500 to 2000
+move name B5 moveto 100.0 250.0 200.0 50.0 from 500 to 2000
+move name B6 moveto 100.0 300.0 200.0 60.0 from 500 to 2000
+move name B7 moveto 100.0 350.0 200.0 70.0 from 500 to 2000
+move name B0 moveto 200.0 00.0 100.0 00.0 from 2000 to 3000
+move name B1 moveto 200.0 10.0 100.0 10.0 from 2000 to 3000
+move name B2 moveto 200.0 20.0 100.0 20.0 from 2000 to 3000
+move name B3 moveto 200.0 30.0 100.0 30.0 from 2000 to 3000
+move name B4 moveto 200.0 40.0 100.0 40.0 from 2000 to 3000
+move name B5 moveto 200.0 50.0 100.0 50.0 from 2000 to 3000
+move name B6 moveto 200.0 60.0 100.0 60.0 from 2000 to 3000
+move name B7 moveto 200.0 70.0 100.0 70.0 from 2000 to 3000
+move name B0 moveto 100.0 00.0 100.0 70.0 from 3000 to 3500
+move name B1 moveto 100.0 10.0 100.0 70.0 from 3000 to 3500
+move name B2 moveto 100.0 20.0 100.0 70.0 from 3000 to 3500
+move name B3 moveto 100.0 30.0 100.0 70.0 from 3000 to 3500
+move name B4 moveto 100.0 40.0 100.0 70.0 from 3000 to 3500
+move name B5 moveto 100.0 50.0 100.0 70.0 from 3000 to 3500
+move name B6 moveto 100.0 60.0 100.0 70.0 from 3000 to 3500
+move name B7 moveto 100.0 70.0 100.0 70.0 from 3000 to 3500
+move name B0 moveto 100.0 70.0 100.0 70.0 from 3500 to 4000
+move name B1 moveto 100.0 70.0 100.0 70.0 from 3500 to 4000
+move name B2 moveto 100.0 70.0 100.0 70.0 from 3500 to 4000
+move name B3 moveto 100.0 70.0 100.0 70.0 from 3500 to 4000
+move name B4 moveto 100.0 70.0 100.0 70.0 from 3500 to 4000
+move name B5 moveto 100.0 70.0 100.0 70.0 from 3500 to 4000
+move name B6 moveto 100.0 70.0 100.0 70.0 from 3500 to 4000
+move name B7 moveto 100.0 70.0 100.0 70.0 from 3500 to 4000

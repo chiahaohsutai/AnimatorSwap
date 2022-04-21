@@ -1,0 +1,50 @@
+canvas 1200 1200
+oval name QB center-x 250.0 center-y 385 x-radius 10 y-radius 10 color 0 0 0 from 1 to 500
+
+move name QB moveto 250 385 250 400 from 10 to 100
+
+oval name Ball center-x 250.0 center-y 385 x-radius 7 y-radius 3 color 210 105 30 from 1 to 500
+
+move name Ball moveto 250 385 250 400 from 10 to 100
+
+move name Ball moveto 250 385 190 100 from 100 to 300
+
+oval name C center-x 250.0 center-y 375 x-radius 10 y-radius 10 color 0 0 0 from 1 to 500
+
+oval name RG center-x 265 center-y 377 x-radius 10 y-radius 10 color 0 0 0 from 1 to 500
+
+oval name RT center-x 280 center-y 381 x-radius 10 y-radius 10 color 0 0 0 from 1 to 500
+
+oval name LG center-x 235 center-y 377 x-radius 10 y-radius 10 color 0 0 0 from 1 to 500
+
+oval name LT center-x 220 center-y 381 x-radius 10 y-radius 10 color 0 0 0 from 1 to 500
+
+
+oval name wrX center-x 100 center-y 375 x-radius 10 y-radius 10 color 0 0 200 from 1 to 500
+
+move name wrX moveto 100 375 100 300 from 10 to 100
+
+oval name wrY center-x 150 center-y 375 x-radius 10 y-radius 10 color 200 0 0 from 1 to 500
+
+move name wrY moveto 150 275 190 100 from 10 to 300
+
+oval name HB center-x 200 center-y 385 x-radius 10 y-radius 10 color 0 150 150 from 1 to 500
+
+move name HB moveto 200 385 240 300 from 10 to 100
+
+
+oval name wrZ center-x 350 center-y 390 x-radius 10 y-radius 10 color 0 150 150 from 1 to 500
+
+move name wrZ moveto 350 390 360 100 from 10 to 300
+
+
+oval name TE center-x 360 center-y 380 x-radius 10 y-radius 10 color 150 0 150 from 1 to 500
+
+move name TE moveto 360 380 360 300 from 10 to 300
+
+
+
+
+
+
+

@@ -3,15 +3,15 @@ import java.util.ArrayList;
 
 import controller.AnimatorController;
 import controller.InteractiveController;
-import controller.model.AnimatorModel;
-import controller.model.CartPt;
-import controller.model.Color;
-import controller.model.Command;
-import controller.model.Elipse;
-import controller.model.Rectangle;
-import controller.model.Shape;
-import controller.model.SimpleAnimatorModel;
-import controller.model.Size;
+import model.AnimatorModel;
+import model.CartPt;
+import model.Color;
+import model.Command;
+import model.Elipse;
+import model.Rectangle;
+import model.Shape;
+import model.SimpleAnimatorModel;
+import model.Size;
 
 import org.junit.Test;
 

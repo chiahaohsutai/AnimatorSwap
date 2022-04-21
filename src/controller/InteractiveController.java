@@ -1,6 +1,6 @@
 package controller;
 
-import controller.model.AnimatorModel;
+import model.AnimatorModel;
 import view.VisualView;
 
 /**

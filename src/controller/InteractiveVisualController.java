@@ -5,8 +5,8 @@ import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.List;
 
-import controller.model.AnimatorModel;
-import controller.model.Shape;
+import model.AnimatorModel;
+import model.Shape;
 import view.InteractiveAnimatorGraphicsView;
 
 /**

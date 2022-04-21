@@ -5,7 +5,7 @@ import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
 
-import controller.model.AnimatorModelState;
+import model.AnimatorModelState;
 
 /**
  * A class for adding interactive view options. InteractiveAnimatorGraphicsView extends

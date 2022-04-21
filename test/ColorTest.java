@@ -1,4 +1,4 @@
-import controller.model.Color;
+import model.Color;
 
 import org.junit.Assert;
 import org.junit.Test;

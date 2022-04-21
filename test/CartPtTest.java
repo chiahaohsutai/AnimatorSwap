@@ -1,4 +1,4 @@
-import controller.model.CartPt;
+import model.CartPt;
 
 import org.junit.Assert;
 import org.junit.Test;

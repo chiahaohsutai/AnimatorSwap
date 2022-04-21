@@ -9,12 +9,12 @@ import java.nio.file.Paths;
 import java.util.List;
 import java.util.Map;
 
-import controller.model.AnimatorModelState;
-import controller.model.CartPt;
-import controller.model.Color;
-import controller.model.Command;
-import controller.model.Shape;
-import controller.model.Size;
+import model.AnimatorModelState;
+import model.CartPt;
+import model.Color;
+import model.Command;
+import model.Shape;
+import model.Size;
 
 /**
  * A class for displaying an SVG version of a view. SVG is an online tool for displaying animations

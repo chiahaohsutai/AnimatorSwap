@@ -10,7 +10,7 @@ import javax.swing.JFrame;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 
-import controller.model.AnimatorModelState;
+import model.AnimatorModelState;
 
 /**
  * A class for displaying a graphic version of a Shape animation. An AnimatorGraphicsView has

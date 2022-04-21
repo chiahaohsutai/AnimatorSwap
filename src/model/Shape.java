@@ -1,4 +1,4 @@
-package controller.model;
+package model;
 
 /**
  * Represents a Shape with a location, size and color. These are methods that every Shape must

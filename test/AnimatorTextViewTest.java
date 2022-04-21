@@ -7,7 +7,7 @@ import java.nio.file.Path;
 
 import controller.AnimatorController;
 import controller.TextController;
-import controller.model.AnimatorModel;
+import model.AnimatorModel;
 import view.AnimationFileReader;
 import view.AnimatorTextView;
 import view.AnimatorView;

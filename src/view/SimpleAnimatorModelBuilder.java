@@ -3,14 +3,14 @@ package view;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-import controller.model.CartPt;
-import controller.model.Color;
-import controller.model.Command;
-import controller.model.Elipse;
-import controller.model.Rectangle;
-import controller.model.Shape;
-import controller.model.SimpleAnimatorModel;
-import controller.model.Size;
+import model.CartPt;
+import model.Color;
+import model.Command;
+import model.Elipse;
+import model.Rectangle;
+import model.Shape;
+import model.SimpleAnimatorModel;
+import model.Size;
 
 /**
  * A builder class for SimpleAnimatorModel. Uses the TweenModelBuilder interface methods to

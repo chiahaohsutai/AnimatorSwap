@@ -12,10 +12,10 @@ import java.util.Map;
 
 import javax.swing.JPanel;
 
-import controller.model.CartPt;
-import controller.model.Command;
-import controller.model.Shape;
-import controller.model.Size;
+import model.CartPt;
+import model.Command;
+import model.Shape;
+import model.Size;
 
 /**
  * A class for drawing a Shape panel. A Shape panel for displaying Shapes. A ShapePanel has a
@@ -69,7 +69,7 @@ public class ShapePanel extends JPanel {
       CartPt loc = s.getLocation();
       Size size = s.getSize();
 
-      controller.model.Color modelColor = s.getColor();
+      model.Color modelColor = s.getColor();
       double red = modelColor.getRed();
       double blue = modelColor.getBlue();
       double green = modelColor.getGreen();

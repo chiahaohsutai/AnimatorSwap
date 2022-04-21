@@ -8,7 +8,7 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.List;
 
-import controller.model.AnimatorModelState;
+import model.AnimatorModelState;
 
 /**
  * Represents a text version of an AnimatorView. A text view has a read only model, an output field,

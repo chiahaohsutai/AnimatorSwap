@@ -3,11 +3,11 @@
 // (powered by FernFlower decompiler)
 //
 
-import controller.model.CartPt;
-import controller.model.Color;
-import controller.model.Rectangle;
-import controller.model.Shape;
-import controller.model.Size;
+import model.CartPt;
+import model.Color;
+import model.Rectangle;
+import model.Shape;
+import model.Size;
 
 import org.junit.Assert;
 import org.junit.Test;

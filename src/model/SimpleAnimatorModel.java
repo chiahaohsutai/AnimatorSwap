@@ -188,7 +188,7 @@ public class SimpleAnimatorModel implements AnimatorModel {
    * @param s Shape to be printed
    * @return String representation of all the given shape's movement
    */
-  private String printShapeMotion(Shape s) {
+  protected String printShapeMotion(Shape s) {
     String ret = "";
     List<Command> cmds = commands.get(s.getName());
     for (Command c : cmds) {

@@ -8,7 +8,6 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.List;
 import java.util.Map;
-
 import model.AnimatorModelState;
 import model.CartPt;
 import model.Color;
@@ -23,7 +22,6 @@ import model.Size;
  */
 public class SVGView implements AnimatorView {
   private final AnimatorModelState model;
-
   private final File svgData;
   StringBuilder build;
   String outputFile;

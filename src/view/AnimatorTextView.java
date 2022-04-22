@@ -16,7 +16,6 @@ import model.AnimatorModelState;
  * Appendable to write to or a file to write to.
  */
 public class AnimatorTextView implements AnimatorView {
-
   private final AnimatorModelState model;
   private Appendable output;
   private boolean written = false;
@@ -68,7 +67,6 @@ public class AnimatorTextView implements AnimatorView {
       throw new IllegalArgumentException("Can not append to output");
     }
   }
-
 
   @Override
   public void refresh() {

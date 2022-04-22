@@ -20,10 +20,12 @@ import model.SimpleAnimatorModel;
 import model.Size;
 import model.animatorLayersImp.AnimatorLayer;
 import model.animatorLayersImp.AnimatorLayers;
+import view.AnimatorTextView;
 import view.AnimatorView;
 import view.SVGView;
 
 import static org.junit.Assert.assertArrayEquals;
+import static org.junit.Assert.assertNotEquals;
 import static org.testng.AssertJUnit.assertEquals;
 
 /**
@@ -209,6 +211,40 @@ public class AnimatorLayeringTests {
 
   @Test
   public void testTextView() {
+    initAnimator();
+    Appendable output = new StringBuilder();
+    AnimatorView view = new AnimatorTextView(animator, output);
+    animator.addShape(ellipse0, ellipse1, rect0, rect1);
+    animator.setLayer("pancho", 2);
+    animator.setLayer("pancho3", 2);
 
+    Command c0 = new Command(ellipse0, 0.0D, 1000.0D,
+            new CartPt(100.0D, 100.0D),
+            new Size(100.0D, 100.0D),
+            new Color(1.0, 1.0, 1.0));
+    Command c1 = new Command(ellipse1, 0.0D, 10.0D,
+            new CartPt(100.0D, 10.0D),
+            new Size(100.0D, 100.0D),
+            new Color(1.0, 1.0, 1.0));
+
+    animator.addCommand(ellipse0, c0);
+    animator.addCommand(ellipse1, c1);
+    view.refresh();
+    String expected = "The format for the text is the following:\n" +
+            "motion shapeID   startTick xPos yPos height width R G B   " +
+            "endTick xPos yPos height width R G B\n" +
+            "(the first half is the original values and the second half is the " +
+            "values after being transformed)\n" +
+            "\n" +
+            "Add shape pancho\n" +
+            "Add shape pancho1\n" +
+            "Add shape pancho2\n" +
+            "Add shape pancho3\n" +
+            "\n" +
+            "Layer 1\n" +
+            "motion pancho1 0  0   0   10 10  10 10  10    10  100 10  100 100  1 1  1\n" +
+            "Layer 2\n" +
+            "motion pancho 0  0   0   10 10  10 10  10    1000  100 100  100 100  1 1  1\n";
+    assertEquals(expected, output.toString());
   }
 }

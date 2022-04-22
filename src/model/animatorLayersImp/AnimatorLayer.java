@@ -6,7 +6,6 @@ import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 import java.util.TreeMap;
-import java.util.stream.Collectors;
 import model.Shape;
 import model.SimpleAnimatorModel;
 
@@ -101,6 +100,30 @@ public class AnimatorLayer extends SimpleAnimatorModel implements AnimatorLayers
     List<Shape> shapesCopy = super.getShapes();
     shapesCopy.sort((s1, s2) -> getShapeLayer(s1.getName()) - getShapeLayer(s2.getName()));
     return shapesCopy;
+  }
+
+  @Override
+  public String printMotionTable() {
+
+    // print the instructions for reading the text output.
+    StringBuilder ret = new StringBuilder();
+    ret.append("The format for the text is the following:\n");
+    ret.append("motion shapeID   startTick xPos yPos height width R G B   " +
+            "endTick xPos yPos height width R G B\n");
+    ret.append("(the first half is the original values and the second half is " +
+            "the values after being transformed)\n\n");
+
+    for (Shape s : shapes) {
+      ret.append(String.format("Add shape %s", s.getName())).append("\n");
+    }
+    ret.append("\n");
+    // loop through the shapes based on layering order (smallest to highest)
+    for (int l : layering.keySet()) {
+      ret.append(String.format("Layer %d\n", l));
+      List<String> names = layering.get(l);
+      names.forEach(s -> ret.append(printShapeMotion(Objects.requireNonNull(getShape(s)))));
+    }
+    return ret.toString();
   }
 
   /**

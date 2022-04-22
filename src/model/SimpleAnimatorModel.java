@@ -6,7 +6,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-
 /**
  * A class that represents an instance of an Animator model. Keeps track of Shapes by using
  * a List of Shapes and tracks commands by storing a Map of type String to type List of commands.
@@ -14,11 +13,10 @@ import java.util.Map;
  * that each shape's name is unique.
  */
 public class SimpleAnimatorModel implements AnimatorModel {
-
-  private final Map<String, ArrayList<Command>> commands = new HashMap<>();
-  private final int canvasHeight;
-  private final int canvasWidth;
-  private List<Shape> shapes = new ArrayList<>();
+  protected final Map<String, ArrayList<Command>> commands = new HashMap<>();
+  protected final int canvasHeight;
+  protected final int canvasWidth;
+  protected List<Shape> shapes = new ArrayList<>();
 
 
   /**

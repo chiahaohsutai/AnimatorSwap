@@ -82,8 +82,8 @@ public class SVGView implements AnimatorView {
     CartPt location = s.getLocation();
     Size size = s.getSize();
     Color tempColor = s.getColor();
-    Color color = new Color(tempColor.getRed(), tempColor.getGreen() * 255,
-            tempColor.getBlue() * 255);
+    Color color = new Color(tempColor.getRed(), tempColor.getGreen(),
+            tempColor.getBlue());
 
     String x;
     String y;

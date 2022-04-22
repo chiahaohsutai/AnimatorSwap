@@ -1,14 +1,10 @@
 import org.junit.Assert;
 import org.junit.Test;
-
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import java.util.stream.Collectors;
-
 import controller.SVGController;
 import model.CartPt;
 import model.Color;
@@ -16,16 +12,13 @@ import model.Command;
 import model.Elipse;
 import model.Rectangle;
 import model.Shape;
-import model.SimpleAnimatorModel;
 import model.Size;
 import model.animatorLayersImp.AnimatorLayer;
 import model.animatorLayersImp.AnimatorLayers;
 import view.AnimatorTextView;
 import view.AnimatorView;
 import view.SVGView;
-
 import static org.junit.Assert.assertArrayEquals;
-import static org.junit.Assert.assertNotEquals;
 import static org.testng.AssertJUnit.assertEquals;
 
 /**
@@ -33,7 +26,6 @@ import static org.testng.AssertJUnit.assertEquals;
  * and the views.
  */
 public class AnimatorLayeringTests {
-
   // generates shapes and model.
   private Shape ellipse0;
   private Shape rect0;
@@ -149,6 +141,56 @@ public class AnimatorLayeringTests {
     shapes = animator.getShapesAtLayer(2);
     names = shapes.stream().map(Shape::getName).toArray(String[]::new);
     assertArrayEquals(new String[] {"pancho", "pancho3"}, names);
+  }
+
+  @Test
+  public void printShapeMotionsTest() {
+    initAnimator();
+    animator.addShape(ellipse0, ellipse1, rect0, rect1);
+    animator.setLayer("pancho", 2);
+    animator.setLayer("pancho3", 2);
+
+    Command c0 = new Command(ellipse0, 0.0D, 1000.0D,
+            new CartPt(100.0D, 100.0D),
+            new Size(100.0D, 100.0D),
+            new Color(1.0, 1.0, 1.0));
+    Command c1 = new Command(ellipse1, 0.0D, 10.0D,
+            new CartPt(100.0D, 10.0D),
+            new Size(100.0D, 100.0D),
+            new Color(1.0, 1.0, 1.0));
+
+    animator.addCommand(ellipse0, c0);
+    animator.addCommand(ellipse1, c1);
+    String expected = "The format for the text is the following:\n" +
+            "motion shapeID   startTick xPos yPos height width R G B   " +
+            "endTick xPos yPos height width R G B\n" +
+            "(the first half is the original values and the second half is the " +
+            "values after being transformed)\n" +
+            "\n" +
+            "Add shape pancho\n" +
+            "Add shape pancho1\n" +
+            "Add shape pancho2\n" +
+            "Add shape pancho3\n" +
+            "\n" +
+            "Layer 1\n" +
+            "motion pancho1 0  0   0   10 10  10 10  10    10  100 10  100 100  1 1  1\n" +
+            "Layer 2\n" +
+            "motion pancho 0  0   0   10 10  10 10  10    1000  100 100  100 100  1 1  1\n";
+    assertEquals(expected, animator.printMotionTable());
+  }
+
+  @Test
+  public void printEmptyShapeMotionsTest() {
+    initAnimator();
+    String expected = "The format for the text is the following:\n" +
+            "motion shapeID   startTick xPos yPos height width R G B   " +
+            "endTick xPos yPos height width R G B\n" +
+            "(the first half is the original values and the second half is the " +
+            "values after being transformed)\n" +
+            "\n" +
+            "\n" +
+            "Layer 1\n";
+    assertEquals(expected, animator.printMotionTable());
   }
 
   //////// TEST FOR THE SVG ////////

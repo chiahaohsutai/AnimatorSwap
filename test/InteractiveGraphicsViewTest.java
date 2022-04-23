@@ -21,7 +21,7 @@ import model.SimpleAnimatorModel;
 import model.Size;
 import view.AnimationFileReader;
 import view.InteractiveAnimatorGraphicsView;
-import view.SimpleAnimatorModelBuilder;
+import view.AnimatorModelBuilder;
 
 import static org.junit.Assert.assertEquals;
 
@@ -56,7 +56,7 @@ public class InteractiveGraphicsViewTest {
   @Test
   public void testInteractiveReadFile() throws FileNotFoundException {
     AnimationFileReader reader = new AnimationFileReader();
-    AnimatorModel model = reader.readFile("toh-12.txt", new SimpleAnimatorModelBuilder());
+    AnimatorModel model = reader.readFile("toh-12.txt", new AnimatorModelBuilder());
     InteractiveAnimatorGraphicsView view = new InteractiveAnimatorGraphicsView(model);
     AnimatorController controller = new InteractiveVisualController(model, view, 10);
     controller.startProgram();
@@ -68,7 +68,7 @@ public class InteractiveGraphicsViewTest {
   public void testInteractiveReadFile3() throws FileNotFoundException {
     AnimationFileReader reader = new AnimationFileReader();
     AnimatorModel model = reader.readFile("big-bang-big-crunch.txt",
-            new SimpleAnimatorModelBuilder());
+            new AnimatorModelBuilder());
     InteractiveAnimatorGraphicsView view = new InteractiveAnimatorGraphicsView(model);
     AnimatorController controller = new InteractiveVisualController(model, view, 10);
     System.out.println(model.getCanvasWidth() + " " + model.getCanvasHeight());
@@ -163,7 +163,7 @@ public class InteractiveGraphicsViewTest {
   public void testInteractiveReadFile2() throws FileNotFoundException {
     AnimationFileReader reader = new AnimationFileReader();
     AnimatorModel model = reader.readFile("buildings.txt",
-            new SimpleAnimatorModelBuilder());
+            new AnimatorModelBuilder());
     InteractiveAnimatorGraphicsView view = new InteractiveAnimatorGraphicsView(model);
     AnimatorController controller = new InteractiveVisualController(
             model, view, 1);
@@ -224,7 +224,7 @@ public class InteractiveGraphicsViewTest {
 
     AnimationFileReader reader = new AnimationFileReader();
     AnimatorModel model = reader.readFile("ProgrammaticAnimation.txt",
-            new SimpleAnimatorModelBuilder());
+            new AnimatorModelBuilder());
     InteractiveAnimatorGraphicsView view = new InteractiveAnimatorGraphicsView(model);
     AnimatorController controller = new InteractiveVisualController(
             model, view, 10);

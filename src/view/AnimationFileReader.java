@@ -92,6 +92,9 @@ public class AnimationFileReader {
                   scaleByInfo.getStart(),
                   scaleByInfo.getEnd());
           break;
+        case "setLayer":
+
+          break;
         default:
           throw new IllegalStateException("Unidentified token " + command + " "
                   + "read from file");
@@ -99,6 +102,13 @@ public class AnimationFileReader {
       }
     }
     return builder.build();
+  }
+
+  private class LayerInfo {
+    private String name;
+    private int layer;
+
+
   }
 
   private CanvasInfo readCanvasInfo(Scanner sc) {

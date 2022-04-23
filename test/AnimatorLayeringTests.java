@@ -249,6 +249,40 @@ public class AnimatorLayeringTests {
     }
   }
 
+  @Test(expected = IllegalArgumentException.class)
+  public void testHeightZero() {
+    initAnimator();
+    animator.setCanvasDim(10, 0);
+  }
+
+  @Test(expected = IllegalArgumentException.class)
+  public void testHeightNegative() {
+    initAnimator();
+    animator.setCanvasDim(10, -1);
+  }
+
+  @Test(expected = IllegalArgumentException.class)
+  public void testWidthZero() {
+    initAnimator();
+    animator.setCanvasDim(0, 1);
+  }
+
+  @Test(expected = IllegalArgumentException.class)
+  public void testWidthNegative() {
+    initAnimator();
+    animator.setCanvasDim(-10, 1);
+  }
+
+  @Test
+  public void testSetDim() {
+    initAnimator();
+    assertEquals(500, animator.getCanvasHeight());
+    assertEquals(500, animator.getCanvasWidth());
+    animator.setCanvasDim(10, 10);
+    assertEquals(10, animator.getCanvasHeight());
+    assertEquals(10, animator.getCanvasWidth());
+  }
+
   //////// TEST FOR THE TEXT ////////
 
   @Test

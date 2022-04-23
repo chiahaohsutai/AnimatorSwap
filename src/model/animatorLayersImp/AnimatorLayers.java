@@ -39,4 +39,13 @@ public interface AnimatorLayers extends AnimatorModel {
    *     shapes at the given layer.
    */
   List<Shape> getShapesAtLayer(int layerNumber);
+
+  /**
+   * Sets the bounds for the model.
+   *
+   * @param width is the width of the canvas.
+   * @param height is the height of the canvas.
+   * @throws IllegalArgumentException if any dimension is 0 or negative.
+   */
+  void setCanvasDim(int width, int height);
 }

@@ -17,7 +17,7 @@ import view.AnimatorTextView;
 import view.AnimatorView;
 import view.InteractiveAnimatorGraphicsView;
 import view.SVGView;
-import view.SimpleAnimatorModelBuilder;
+import view.AnimatorModelBuilder;
 import view.VisualView;
 
 /**
@@ -49,7 +49,7 @@ public class AnimatorProgram {
         case "-in":
           try {
             AnimationFileReader reader = new AnimationFileReader();
-            model = reader.readFile(args[i + 1], new SimpleAnimatorModelBuilder());
+            model = reader.readFile(args[i + 1], new AnimatorModelBuilder());
           } catch (FileNotFoundException e) {
             displayErrorMsg("Input file can't be found");
           }

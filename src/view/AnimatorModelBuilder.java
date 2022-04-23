@@ -2,41 +2,45 @@ package view;
 
 import java.util.ArrayList;
 import java.util.HashMap;
-
 import model.CartPt;
 import model.Color;
 import model.Command;
 import model.Elipse;
 import model.Rectangle;
 import model.Shape;
-import model.SimpleAnimatorModel;
 import model.Size;
+import model.animatorLayersImp.AnimatorLayer;
+import model.animatorLayersImp.AnimatorLayers;
 
 /**
  * A builder class for SimpleAnimatorModel. Uses the TweenModelBuilder interface methods to
  * construct a SimpleAnimatorModel from text. Used with the AnimatorFileReader class to turn text
  * into a new model.
  */
-public class SimpleAnimatorModelBuilder
-        implements TweenModelBuilder<SimpleAnimatorModel> {
-
-  private SimpleAnimatorModel model;
-  private HashMap<String, Shape> shapeNames;
+public class AnimatorModelBuilder implements TweenModelBuilder<AnimatorLayers> {
+  private final AnimatorLayers model;
+  private final HashMap<String, Shape> shapeNames;
 
 
-  public SimpleAnimatorModelBuilder() {
-    this.model = new SimpleAnimatorModel(new ArrayList<Shape>());
-    shapeNames = new HashMap<String, Shape>();
+  public AnimatorModelBuilder() {
+    this.model = new AnimatorLayer(new ArrayList<>());
+    this.shapeNames = new HashMap<>();
   }
 
   @Override
-  public TweenModelBuilder<SimpleAnimatorModel> setBounds(int width, int height) {
-    this.model = new SimpleAnimatorModel(new ArrayList<Shape>(), width, height);
+  public TweenModelBuilder<AnimatorLayers> setLayer(String name, int layerNumber) {
+    model.setLayer(name, layerNumber);
     return this;
   }
 
   @Override
-  public TweenModelBuilder<SimpleAnimatorModel> addOval(String name, float cx, float cy,
+  public TweenModelBuilder<AnimatorLayers> setBounds(int width, int height) {
+    this.model.setCanvasDim(width, height);
+    return this;
+  }
+
+  @Override
+  public TweenModelBuilder<AnimatorLayers> addOval(String name, float cx, float cy,
                                                         float xRadius, float yRadius, float red,
                                                         float green, float blue, int startOfLife,
                                                         int endOfLife) {
@@ -48,7 +52,7 @@ public class SimpleAnimatorModelBuilder
   }
 
   @Override
-  public TweenModelBuilder<SimpleAnimatorModel> addRectangle(String name, float lx, float ly,
+  public TweenModelBuilder<AnimatorLayers> addRectangle(String name, float lx, float ly,
                                                              float width, float height, float red,
                                                              float green, float blue,
                                                              int startOfLife, int endOfLife) {
@@ -60,7 +64,7 @@ public class SimpleAnimatorModelBuilder
   }
 
   @Override
-  public TweenModelBuilder<SimpleAnimatorModel> addMove(String name, float moveFromX,
+  public TweenModelBuilder<AnimatorLayers> addMove(String name, float moveFromX,
                                                         float moveFromY, float moveToX,
                                                         float moveToY, int startTime, int endTime) {
     if (shapeNames.containsKey(name)) {
@@ -75,7 +79,7 @@ public class SimpleAnimatorModelBuilder
   }
 
   @Override
-  public TweenModelBuilder<SimpleAnimatorModel> addColorChange(String name, float oldR, float oldG,
+  public TweenModelBuilder<AnimatorLayers> addColorChange(String name, float oldR, float oldG,
                                                                float oldB, float newR, float newG,
                                                                float newB, int startTime,
                                                                int endTime) {
@@ -90,7 +94,7 @@ public class SimpleAnimatorModelBuilder
   }
 
   @Override
-  public TweenModelBuilder<SimpleAnimatorModel> addScaleToChange(String name, float fromSx,
+  public TweenModelBuilder<AnimatorLayers> addScaleToChange(String name, float fromSx,
                                                                  float fromSy, float toSx,
                                                                  float toSy, int startTime,
                                                                  int endTime) {
@@ -106,7 +110,7 @@ public class SimpleAnimatorModelBuilder
   }
 
   @Override
-  public SimpleAnimatorModel build() {
+  public AnimatorLayers build() {
     return model;
   }
 }

@@ -96,6 +96,15 @@ public class AnimatorLayer extends SimpleAnimatorModel implements AnimatorLayers
   }
 
   @Override
+  public void setCanvasDim(int width, int height) {
+    if (width <= 0 || height <= 0) {
+      throw new IllegalArgumentException("Dimensions are invalid");
+    }
+    this.canvasWidth = width;
+    this.canvasHeight = height;
+  }
+
+  @Override
   public List<Shape> getShapes() {
     List<Shape> shapesCopy = super.getShapes();
     shapesCopy.sort((s1, s2) -> getShapeLayer(s1.getName()) - getShapeLayer(s2.getName()));

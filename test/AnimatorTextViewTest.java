@@ -11,7 +11,7 @@ import model.AnimatorModel;
 import view.AnimationFileReader;
 import view.AnimatorTextView;
 import view.AnimatorView;
-import view.SimpleAnimatorModelBuilder;
+import view.AnimatorModelBuilder;
 
 import static org.junit.Assert.assertEquals;
 
@@ -23,7 +23,7 @@ public class AnimatorTextViewTest {
   @Test
   public void testTextView() throws FileNotFoundException {
     AnimationFileReader reader = new AnimationFileReader();
-    AnimatorModel model = reader.readFile("toh-3.txt", new SimpleAnimatorModelBuilder());
+    AnimatorModel model = reader.readFile("toh-3.txt", new AnimatorModelBuilder());
     AnimatorView view = new AnimatorTextView(model, System.out);
     AnimatorController ctrl = new TextController(view);
     ctrl.startProgram();
@@ -33,7 +33,7 @@ public class AnimatorTextViewTest {
   @Test
   public void testTextViewWriteToFile() throws IOException {
     AnimationFileReader reader = new AnimationFileReader();
-    AnimatorModel model = reader.readFile("toh-3.txt", new SimpleAnimatorModelBuilder());
+    AnimatorModel model = reader.readFile("toh-3.txt", new AnimatorModelBuilder());
     AnimatorView view = new AnimatorTextView(model, "test-text.txt");
     AnimatorController ctrl = new TextController(view);
     ctrl.startProgram();

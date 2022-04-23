@@ -17,7 +17,7 @@ import org.junit.Test;
 
 import view.AnimationFileReader;
 import view.AnimatorGraphicsView;
-import view.SimpleAnimatorModelBuilder;
+import view.AnimatorModelBuilder;
 import view.VisualView;
 
 import static org.junit.Assert.assertEquals;
@@ -25,13 +25,13 @@ import static org.junit.Assert.assertEquals;
 /**
  * A class for testing a SImpleAnimatorBuilder.
  */
-public class SimpleAnimatorModelBuilderTest {
+public class AnimatorModelBuilderTest {
 
 
   @Test
   public void testBuildtoh3() throws FileNotFoundException {
     AnimationFileReader reader = new AnimationFileReader();
-    AnimatorModel model = reader.readFile("toh-3.txt", new SimpleAnimatorModelBuilder());
+    AnimatorModel model = reader.readFile("toh-3.txt", new AnimatorModelBuilder());
     VisualView view = new AnimatorGraphicsView(model);
     AnimatorController ctrl = new InteractiveController(model, view, 0.1);
     ctrl.startProgram();
@@ -41,7 +41,7 @@ public class SimpleAnimatorModelBuilderTest {
   @Test
   public void testBuildtoh8() throws FileNotFoundException {
     AnimationFileReader reader = new AnimationFileReader();
-    AnimatorModel model = reader.readFile("toh-8.txt", new SimpleAnimatorModelBuilder());
+    AnimatorModel model = reader.readFile("toh-8.txt", new AnimatorModelBuilder());
     VisualView view = new AnimatorGraphicsView(model);
     AnimatorController ctrl = new InteractiveController(model, view, 0.01);
     ctrl.startProgram();
@@ -53,7 +53,7 @@ public class SimpleAnimatorModelBuilderTest {
   public void testBuildtoh12() throws FileNotFoundException {
     AnimationFileReader reader = new AnimationFileReader();
     AnimatorModel model = reader.readFile("toh-12.txt",
-            new SimpleAnimatorModelBuilder());
+            new AnimatorModelBuilder());
     VisualView view = new AnimatorGraphicsView(model);
     AnimatorController ctrl = new InteractiveController(model, view, 0.01);
     ctrl.startProgram();

@@ -6,6 +6,7 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.ArrayList;
 
+import model.AnimatorModel;
 import model.CartPt;
 import model.Color;
 import model.Command;
@@ -15,7 +16,7 @@ import model.SimpleAnimatorModel;
 import model.Size;
 import view.AnimationFileReader;
 import view.SVGView;
-import view.SimpleAnimatorModelBuilder;
+import view.AnimatorModelBuilder;
 
 import org.junit.Test;
 
@@ -221,8 +222,8 @@ public class SVGViewTest {
   @Test
   public void testReadFileSVG() throws FileNotFoundException {
     AnimationFileReader reader = new AnimationFileReader();
-    SimpleAnimatorModel model = reader.readFile("toh-3.txt", new
-            SimpleAnimatorModelBuilder());
+    AnimatorModel model = reader.readFile("toh-3.txt", new
+            AnimatorModelBuilder());
     SVGView svgView = new SVGView(model, "SVGData.xml");
     SVGController ctrl = new SVGController(svgView, 1.0D);
     ctrl.startProgram();
@@ -337,8 +338,8 @@ public class SVGViewTest {
   @Test
   public void testReadFileSVGHos() throws FileNotFoundException {
     AnimationFileReader reader = new AnimationFileReader();
-    SimpleAnimatorModel model = reader.readFile("hos-y-juke.txt", new
-            SimpleAnimatorModelBuilder());
+    AnimatorModel model = reader.readFile("hos-y-juke.txt", new
+            AnimatorModelBuilder());
     SVGView svgView = new SVGView(model, "SVGData.xml");
     SVGController ctrl = new SVGController(svgView, 1.0D);
     ctrl.startProgram();

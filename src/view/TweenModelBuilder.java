@@ -9,6 +9,14 @@ package view;
 public interface TweenModelBuilder<T> {
 
   /**
+   * Sets the layer for the given shape. Higher layers means that ou will be drawn on top.
+   *
+   * @param name the unique name given to this shape.
+   * @param layerNumber is the layer you want the shape to go in.
+   */
+  TweenModelBuilder<T> setLayer(String name, int layerNumber);
+
+  /**
    * Set the bounds of the canvas for the animation.
    *
    * @param width  the width in pixels of the canvas

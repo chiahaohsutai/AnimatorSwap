@@ -14,8 +14,8 @@ import java.util.Map;
  */
 public class SimpleAnimatorModel implements AnimatorModel {
   protected final Map<String, ArrayList<Command>> commands = new HashMap<>();
-  protected final int canvasHeight;
-  protected final int canvasWidth;
+  protected int canvasHeight;
+  protected int canvasWidth;
   protected List<Shape> shapes = new ArrayList<>();
 
 

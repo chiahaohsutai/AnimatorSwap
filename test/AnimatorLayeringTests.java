@@ -18,9 +18,9 @@ import model.Shape;
 import model.Size;
 import model.animatorLayersImp.AnimatorLayer;
 import model.animatorLayersImp.AnimatorLayers;
-import view.TweenModelBuilder;
-import view.AnimationFileReader;
-import view.AnimatorModelBuilder;
+import io.TweenModelBuilder;
+import io.AnimationFileReader;
+import io.AnimatorModelBuilder;
 import view.AnimatorTextView;
 import view.AnimatorView;
 import view.SVGView;
@@ -880,5 +880,30 @@ public class AnimatorLayeringTests {
     } catch (FileNotFoundException | IllegalStateException | InputMismatchException e) {
       e.printStackTrace();
     }
+  }
+
+  @Test(expected = InputMismatchException.class)
+  public void testLayeringInReader() {
+    TweenModelBuilder<AnimatorLayers> builder = new AnimatorModelBuilder();
+    String dest = "testReadingWithLayersFail.txt";
+    try {
+      AnimatorLayers anim = new AnimationFileReader().readFile(dest, builder);
+    } catch (FileNotFoundException | IllegalStateException | InputMismatchException e) {
+      if (e instanceof InputMismatchException) {
+        throw new InputMismatchException();
+      }
+    }
+  }
+
+  //////// Test for the builder ////////
+
+  @Test
+  public void testBuilderSetLayer() {
+    TweenModelBuilder<AnimatorLayers> builder = new AnimatorModelBuilder();
+    builder.addRectangle("rect", 1, 1, 10, 10, 12, 13,
+            56, 0, 10);
+    builder.setLayer("rect", 4);
+    AnimatorLayers anim = builder.build();
+    assertEquals(4, anim.getShapeLayer("rect"));
   }
 }

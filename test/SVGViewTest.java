@@ -14,9 +14,9 @@ import model.Rectangle;
 import model.Shape;
 import model.SimpleAnimatorModel;
 import model.Size;
-import view.AnimationFileReader;
+import io.AnimationFileReader;
 import view.SVGView;
-import view.AnimatorModelBuilder;
+import io.AnimatorModelBuilder;
 
 import org.junit.Test;
 

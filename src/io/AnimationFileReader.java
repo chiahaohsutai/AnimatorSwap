@@ -1,4 +1,4 @@
-package view;
+package io;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -27,7 +27,7 @@ public class AnimationFileReader {
    *                                type
    * @throws IllegalStateException  if an illegal token is read from the file
    */
-  public <T> T readFile(String fileName, view.TweenModelBuilder<T> builder) throws
+  public <T> T readFile(String fileName, TweenModelBuilder<T> builder) throws
           FileNotFoundException, IllegalStateException, InputMismatchException {
     Scanner sc;
 
@@ -104,7 +104,7 @@ public class AnimationFileReader {
     return builder.build();
   }
 
-  private LayerInfo readLayerInfo(Scanner sc) {
+  private LayerInfo readLayerInfo(Scanner sc) throws InputMismatchException {
     LayerInfo info = new LayerInfo();
     info.setName(sc.next());
     info.setLayer(sc.nextInt());

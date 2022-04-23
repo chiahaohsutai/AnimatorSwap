@@ -11,13 +11,13 @@ import controller.TextController;
 import controller.InteractiveController;
 import model.AnimatorModel;
 import model.SimpleAnimatorModel;
-import view.AnimationFileReader;
+import io.AnimationFileReader;
 import view.AnimatorGraphicsView;
 import view.AnimatorTextView;
 import view.AnimatorView;
 import view.InteractiveAnimatorGraphicsView;
 import view.SVGView;
-import view.AnimatorModelBuilder;
+import io.AnimatorModelBuilder;
 import view.VisualView;
 
 /**

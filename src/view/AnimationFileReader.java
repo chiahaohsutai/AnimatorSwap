@@ -35,7 +35,6 @@ public class AnimationFileReader {
 
     while (sc.hasNext()) {
       String command = sc.next();
-      ShapeInfo shapeInfo;
       switch (command) {
         case "canvas":
           CanvasInfo canvasInfo = readCanvasInfo(sc);
@@ -93,7 +92,8 @@ public class AnimationFileReader {
                   scaleByInfo.getEnd());
           break;
         case "setLayer":
-
+          LayerInfo layerInfo = readLayerInfo(sc);
+          builder.setLayer(layerInfo.getName(), layerInfo.getLayer());
           break;
         default:
           throw new IllegalStateException("Unidentified token " + command + " "
@@ -104,11 +104,11 @@ public class AnimationFileReader {
     return builder.build();
   }
 
-  private class LayerInfo {
-    private String name;
-    private int layer;
-
-
+  private LayerInfo readLayerInfo(Scanner sc) {
+    LayerInfo info = new LayerInfo();
+    info.setName(sc.next());
+    info.setLayer(sc.nextInt());
+    return info;
   }
 
   private CanvasInfo readCanvasInfo(Scanner sc) {
@@ -295,6 +295,23 @@ public class AnimationFileReader {
     }
 
     return info;
+  }
+
+  private class LayerInfo {
+    private String name;
+    private int layer;
+
+    void setLayer(int layerNumber) {
+      layer = layerNumber;
+    }
+
+    void setName(String id) {
+      name = id;
+    }
+
+    int getLayer() { return layer; }
+
+    String getName() { return name; }
   }
 
   class CanvasInfo {

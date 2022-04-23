@@ -54,9 +54,9 @@ public class AnimatorLayer extends SimpleAnimatorModel implements AnimatorLayers
     if (layering.containsKey(layerNumber)) {
       names = layering.get(layerNumber);
 
-      // checks that the shape is not already there.
+      // checks that the shape is already there. Do nothing if already there.
       if (names.stream().anyMatch(name::equals)) {
-        throw new IllegalArgumentException("The given shape is already at the given layer.");
+        return;
       }
 
     } else {
@@ -133,6 +133,13 @@ public class AnimatorLayer extends SimpleAnimatorModel implements AnimatorLayers
       names.forEach(s -> ret.append(printShapeMotion(Objects.requireNonNull(getShape(s)))));
     }
     return ret.toString();
+  }
+
+  @Override
+  public void removeShape(Shape s) {
+    super.removeShape(s);
+    int index = getShapeLayer(s.getName());
+    layering.get(index).remove(s.getName());
   }
 
   /**

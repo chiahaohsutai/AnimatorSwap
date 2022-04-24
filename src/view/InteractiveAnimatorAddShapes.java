@@ -49,6 +49,5 @@ public class InteractiveAnimatorAddShapes extends InteractiveAnimatorGraphicsVie
   @Override
   public void setListeners(ActionListener actionEvent) {
     super.setListeners(actionEvent);
-
   }
 }

@@ -89,5 +89,4 @@ public class AnimatorGraphicsView extends JFrame implements VisualView, Animator
     shapePanel.takeShapeList(model.getShapesAtTick(tick));
     currentTick.setText("Current tick: " + (int) tick);
   }
-
 }

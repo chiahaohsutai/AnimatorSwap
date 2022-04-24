@@ -9,7 +9,6 @@ public interface AnimatorView {
    */
   void refresh();
 
-
   /**
    * Sets a tick per second rate for a view. Sets the tick rate to the given double / 1000.
    *

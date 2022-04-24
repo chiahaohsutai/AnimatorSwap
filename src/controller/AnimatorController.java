@@ -7,11 +7,8 @@ package controller;
  * operation for the controller to function.
  */
 public interface AnimatorController {
-
   /**
    * Start the program, i.e. give control to the controller.
    */
   void startProgram();
-
-
 }

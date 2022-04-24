@@ -6,6 +6,7 @@ import javax.swing.JFrame;
 
 import controller.AnimatorController;
 import controller.InteractiveVisualController;
+import controller.NewInteractiveVisualController;
 import controller.SVGController;
 import controller.TextController;
 import controller.InteractiveController;
@@ -15,6 +16,7 @@ import view.AnimationFileReader;
 import view.AnimatorGraphicsView;
 import view.AnimatorTextView;
 import view.AnimatorView;
+import view.NewInteractiveAnimatorGraphicsView;
 import view.InteractiveAnimatorGraphicsView;
 import view.SVGView;
 import view.AnimatorModelBuilder;
@@ -92,6 +94,15 @@ public class AnimatorProgram {
               }
               break;
 
+              // edit : adding interactive view with new features into main
+            case "new-interactive":
+              try {
+                view = new NewInteractiveAnimatorGraphicsView(model);
+              } catch (IllegalArgumentException e) {
+                displayErrorMsg("Model is null");
+              }
+              break;
+
             default:
               displayErrorMsg("Invalid view");
           }
@@ -127,8 +138,12 @@ public class AnimatorProgram {
               (InteractiveAnimatorGraphicsView) view;
       controller = new InteractiveVisualController(
               model, interactiveAnimatorGraphicsView, inputSpeed);
+    } else if (view instanceof NewInteractiveVisualController) {
+      NewInteractiveAnimatorGraphicsView newInteractiveAnimatorGraphicsView =
+              (NewInteractiveAnimatorGraphicsView) view;
+      controller = new NewInteractiveVisualController(
+              model, newInteractiveAnimatorGraphicsView, inputSpeed);
     } else if (view instanceof VisualView) {
-
       VisualView visualView = (VisualView) view;
       controller = new InteractiveController(model, visualView, inputSpeed);
     } else if (view instanceof AnimatorTextView) {

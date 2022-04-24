@@ -1,4 +1,4 @@
-package view;
+package io;
 
 /**
  * This interface contains all the methods that the AnimationFileReader class

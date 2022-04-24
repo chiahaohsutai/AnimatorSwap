@@ -15,9 +15,9 @@ import model.Size;
 
 import org.junit.Test;
 
-import view.AnimationFileReader;
+import io.AnimationFileReader;
 import view.AnimatorGraphicsView;
-import view.AnimatorModelBuilder;
+import io.AnimatorModelBuilder;
 import view.VisualView;
 
 import static org.junit.Assert.assertEquals;

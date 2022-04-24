@@ -1,4 +1,4 @@
-package view;
+package io;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -20,7 +20,6 @@ import model.animatorLayersImp.AnimatorLayers;
 public class AnimatorModelBuilder implements TweenModelBuilder<AnimatorLayers> {
   private final AnimatorLayers model;
   private final HashMap<String, Shape> shapeNames;
-
 
   public AnimatorModelBuilder() {
     this.model = new AnimatorLayer(new ArrayList<>());
@@ -44,7 +43,7 @@ public class AnimatorModelBuilder implements TweenModelBuilder<AnimatorLayers> {
                                                         float xRadius, float yRadius, float red,
                                                         float green, float blue, int startOfLife,
                                                         int endOfLife) {
-    Elipse e = new Elipse(name, new CartPt(cx, cy), new Size(xRadius, yRadius),
+    Elipse e = new Elipse(name, new CartPt(cx, cy), new Size(yRadius, xRadius),
             new Color(red, green, blue));
     model.addShape(e);
     shapeNames.put(name, e);

@@ -8,10 +8,10 @@ import java.nio.file.Path;
 import controller.AnimatorController;
 import controller.TextController;
 import model.AnimatorModel;
-import view.AnimationFileReader;
+import io.AnimationFileReader;
 import view.AnimatorTextView;
 import view.AnimatorView;
-import view.AnimatorModelBuilder;
+import io.AnimatorModelBuilder;
 
 import static org.junit.Assert.assertEquals;
 

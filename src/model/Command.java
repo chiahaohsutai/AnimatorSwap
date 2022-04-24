@@ -7,18 +7,13 @@ import java.util.Objects;
  * a given start and end tick.
  */
 public class Command {
-
   private final Shape shape;
-
   private final double startTick;
   private final double endTick;
-
   private final CartPt startLoc;
   private final CartPt endLoc;
-
   private final Size startSize;
   private final Size endSize;
-
   private final Color startColor;
   private final Color endColor;
 

@@ -16,7 +16,7 @@ public interface AnimatorModelState {
   List<Shape> getShapes();
 
   /**
-   * Prints a motion table for every shape in the model. A motion table represnets a Shapes
+   * Prints a motion table for every shape in the model. A motion table represents a Shapes
    * starting position, end position, start size, end size, start color, end color, start tick and
    * end tick.
    *

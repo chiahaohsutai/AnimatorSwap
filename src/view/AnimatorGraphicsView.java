@@ -5,10 +5,7 @@ import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 
-import javax.swing.JPanel;
-import javax.swing.JFrame;
-import javax.swing.JButton;
-import javax.swing.JLabel;
+import javax.swing.*;
 
 import model.AnimatorModelState;
 
@@ -41,7 +38,6 @@ public class AnimatorGraphicsView extends JFrame implements VisualView, Animator
     this.setSize(model.getCanvasWidth(), model.getCanvasHeight());
     this.model = model;
 
-
     buttonPanel = new JPanel();
     buttonPanel.setLayout(new FlowLayout());
     this.add(buttonPanel, BorderLayout.SOUTH);
@@ -52,7 +48,16 @@ public class AnimatorGraphicsView extends JFrame implements VisualView, Animator
 
     shapePanel = new ShapePanel();
     shapePanel.setPreferredSize(new Dimension(model.getCanvasWidth(), model.getCanvasHeight()));
-    this.add(shapePanel, BorderLayout.CENTER);
+
+    // edit : adding scroll pane to hold the panel in which animation is being played in to
+    // enable scrolling
+    JScrollPane scrollPane = new JScrollPane(shapePanel);
+    scrollPane.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_AS_NEEDED);
+    scrollPane.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_AS_NEEDED);
+
+    // animation panel will be playing left side of center
+    this.add(scrollPane, BorderLayout.LINE_START);
+
     shapePanel.takeCommandList(model.getCommandMap());
 
     currentTick = new JLabel("0");

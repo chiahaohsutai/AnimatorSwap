@@ -26,7 +26,7 @@ import view.AnimatorView;
 import view.SVGView;
 
 import static org.junit.Assert.assertArrayEquals;
-import static org.testng.AssertJUnit.assertEquals;
+import static org.junit.Assert.assertEquals;
 
 /**
  * To test the functionality of layering in the animator. Checks that layering works in the model
@@ -270,7 +270,7 @@ public class AnimatorLayeringTests {
     ctrl.startProgram();
 
     try {
-      Assert.assertEquals(Files.readString(Path.of("SVGData.xml")),
+      assertEquals(Files.readString(Path.of("SVGData.xml")),
               "<svg width=\"700\" height=\"500\" version=\"1.1\"\n" +
                       "     xmlns=\"http://www.w3.org/2000/svg\">\n" +
                       "\n" +

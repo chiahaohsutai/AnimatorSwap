@@ -60,7 +60,7 @@ possible. For the text view, also did not change the existing implementation. Th
 implementation delegates the formatting of the text to the model. Hence, we just re-implemented the 
 method that originally printed the text, and added layering to it. 
 
-### Editing the Visual View
+### Editing the Visual View and Supporting Layering Feature.
 
 The ShapePanel (the JPanel where the actual animation takes place) is housed in the very
 first view that was required for the Easy Animator application, which is the AnimatorGraphicsView 
@@ -78,6 +78,49 @@ currently playing animation will support layering.
 
 The assignment required us to implement the additional features of layering and adding shapes to 
 the currently playing animation. Layering is accommodated by this new interactive view according to
-explanation in the previous section. To add the new feature of adding shapes to the currently 
-playing animation, we used the square design pattern since we wanted followed the same 
-design that the team used to implement their interactive view, which was via inheritance.
+explanation in the previous section. 
+
+We followed the same approach as the team did when they implemented the interactive
+view, which was via inheritance. We used the square design pattern to add the new feature of adding 
+shapes to the currently playing animation. We created a new extending interface and a new class
+that implemented this new interface while extending the previous implementation of the view (in 
+this case it would be the existing interactive view). We believed this was the best way since the
+new interactive view contained the same components and functionality as the previous interactive 
+view, but with additional features. In our new interface and class, we constructed a GUI with 
+additional components and implemented new methods that are required to accomplish the new feature. 
+In the GUI, we added a text box, where the user inputs the description of shapes and motions to be 
+added, a button, which processes the edits inputted by the user in the text box when clicked, 
+and a label, that notifies the user if the edits were added to the playing animation were 
+successful or not (not successful meaning that the description that the user inputted contained 
+errors (i.e. incorrect formatting, missing values)). The user can enter more than one edit into the 
+text box. For example, the user may enter the description to add a shape and transform the shape
+three times into the text box and then click the "Add Edits" button to add all the shapes and 
+transformations to the playing animation. The view interface had two new methods, one to 
+retrieve the text inputted in the text box by the user and one to set the text of the label. 
+These two methods will help the controller in its responsibilities.
+
+In addition to the new interface and class in the view component, we utilized the same square 
+design pattern to create a new interactive view controller that handles the new feature. We 
+created an extending interface and a new class that implemented this new interface while extending
+the previous implementation of the controller (in this case it would be the existing interactive
+view controller). We believed this was the best way since the new interactive view controller 
+accomplished the same tasks as the previous interactive view controller, but with additional 
+functionalities. This additional functionality was to process the text entered into the text box
+by the user and to make changes to the model based on it. These changes included adding shapes and
+adding motions to the animator model. By changing the model, the shapes and motions will be added
+to the currently playing animation since the ShapePanel is drawn based on the shapes in the model.
+
+The new interactive view controller utilized another object that we created that basically 
+processes the text inputted by the user called the EditInputReader. The controller grabs the text 
+inputted into the text box and then passes the String to the EditInputReader. This object functions
+similarly to the AnimationFileReader; it actually extends the AnimationFileReader to make use of
+methods such as ReadRectangleInfo to extract information about adding a rectangle, readMoveInfo to
+extract information about adding a move motion, etc. In the EditInputReader, there are two temp
+lists, one to hold the shapes that the user wishes to add and one to hold the motions that the user
+wishes to add. As the EditInputReader processes the text input by the user, it adds the 
+corresponding shape and motion objects to these temporary lists. If all the inputs are valid,
+then the model gets mutated to include all the added shapes and motions. If a single input is 
+invalid, that means there was an invalid shape or motion addition in the description. When this
+happens, the temp lists will be emptied and no shapes or motions that were entered by the user in 
+the text box will be added. Essentially, the description entered by the user must all be correct
+in order to add to the currently playing animation.

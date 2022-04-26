@@ -71,6 +71,21 @@ public class AnimatorLayer extends SimpleAnimatorModel implements AnimatorLayers
   }
 
   @Override
+  public Shape getShapeByName(String name) {
+    // validate inputs.
+    if (Objects.isNull(name)) {
+      throw new IllegalArgumentException("Name/ID cannot be null.");
+    }
+
+    for (Shape singleShape : shapes) {
+      if (singleShape.getName().equals(name)) {
+        return singleShape.createShape();
+      }
+    }
+    throw new IllegalArgumentException("No shape exists with given name.");
+  }
+
+  @Override
   public int getShapeLayer(String name) {
     if (Objects.isNull(name)) {
       throw new IllegalArgumentException("Name/ID cannot be null.");

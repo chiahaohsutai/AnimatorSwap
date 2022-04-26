@@ -136,6 +136,30 @@ public class AnimatorLayeringTests {
     animator.getShapeLayer(null);
   }
 
+  @Test(expected = IllegalArgumentException.class)
+  public void testNullGetShapeByName() {
+    initAnimator();
+    animator.getShapeByName(null);
+  }
+
+  @Test(expected = IllegalArgumentException.class)
+  public void testNonExistentNameGetShapeByName() {
+    initAnimator();
+    animator.getShapeByName("abcdefg");
+  }
+
+  @Test
+  public void testGetShapeByNameValid() {
+    initAnimator();
+    animator.addShape(ellipse0);
+    animator.addShape(ellipse1);
+    animator.addShape(rect0);
+    animator.addShape(rect1);
+    Shape expectedShape = new Rectangle("pancho3", new CartPt(0, 0), new Size(10, 10),
+            new Color(10, 10, 10));
+    assertEquals(expectedShape, animator.getShapeByName("pancho3"));
+  }
+
   @Test
   public void getShapes() {
     initAnimator();

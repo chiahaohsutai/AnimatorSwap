@@ -118,7 +118,10 @@ public class AnimationFileReader {
     return info;
   }
 
-  private RectangleInfo readRectangleInfo(Scanner sc) throws
+  // changed helpers and private classes to protected to allow for reuse when reading the edits
+  // inputted by client while an animation is playing
+
+  protected RectangleInfo readRectangleInfo(Scanner sc) throws
           IllegalStateException, InputMismatchException {
     RectangleInfo info = new RectangleInfo();
 
@@ -160,7 +163,7 @@ public class AnimationFileReader {
     return info;
   }
 
-  private OvalInfo readOvalInfo(Scanner sc) throws
+  protected OvalInfo readOvalInfo(Scanner sc) throws
           IllegalStateException, InputMismatchException {
     OvalInfo info = new OvalInfo();
 
@@ -202,7 +205,7 @@ public class AnimationFileReader {
     return info;
   }
 
-  private MoveInfo readMoveInfo(Scanner sc) throws
+  protected MoveInfo readMoveInfo(Scanner sc) throws
           IllegalStateException, InputMismatchException {
     MoveInfo info = new MoveInfo();
 
@@ -233,7 +236,7 @@ public class AnimationFileReader {
     return info;
   }
 
-  private ChangeColorInfo readChangeColorInfo(Scanner sc) throws
+  protected ChangeColorInfo readChangeColorInfo(Scanner sc) throws
           IllegalStateException, InputMismatchException {
     ChangeColorInfo info = new ChangeColorInfo();
 
@@ -266,7 +269,7 @@ public class AnimationFileReader {
     return info;
   }
 
-  private ScaleByInfo readScaleByInfo(Scanner sc) throws
+  protected ScaleByInfo readScaleByInfo(Scanner sc) throws
           IllegalStateException, InputMismatchException {
     ScaleByInfo info = new ScaleByInfo();
 
@@ -335,7 +338,7 @@ public class AnimationFileReader {
     }
   }
 
-  class Inputable {
+  protected class Inputable {
     protected Map<String, Boolean> valueFlags;
 
     public Inputable() {
@@ -353,7 +356,7 @@ public class AnimationFileReader {
     }
   }
 
-  class ShapeInfo extends Inputable {
+  protected class ShapeInfo extends Inputable {
     private String name;
     private float r;
     private float g;
@@ -430,7 +433,7 @@ public class AnimationFileReader {
 
   }
 
-  class RectangleInfo extends ShapeInfo {
+  protected class RectangleInfo extends ShapeInfo {
     private float x;
     private float y;
     private float width;
@@ -481,7 +484,7 @@ public class AnimationFileReader {
     }
   }
 
-  class OvalInfo extends ShapeInfo {
+  protected class OvalInfo extends ShapeInfo {
     private float cx;
     private float cy;
     private float xradius;
@@ -533,7 +536,7 @@ public class AnimationFileReader {
 
   }
 
-  class MoveInfo extends Inputable {
+  protected class MoveInfo extends Inputable {
     private String name;
     private float fromX;
     private float fromY;
@@ -621,7 +624,7 @@ public class AnimationFileReader {
     }
   }
 
-  class ChangeColorInfo extends Inputable {
+  protected class ChangeColorInfo extends Inputable {
     private String name;
     private float fromR;
     private float fromG;
@@ -731,7 +734,7 @@ public class AnimationFileReader {
     }
   }
 
-  class ScaleByInfo extends Inputable {
+  protected class ScaleByInfo extends Inputable {
     private String name;
     private float fromSx;
     private float fromSy;

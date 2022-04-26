@@ -1,9 +1,14 @@
 package view;
 
-import java.awt.*;
+import java.awt.Dimension;
+import java.awt.BorderLayout;
 import java.awt.event.ActionListener;
-
-import javax.swing.*;
+import javax.swing.JTextArea;
+import javax.swing.JButton;
+import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.BorderFactory;
+import javax.swing.JLabel;
 
 import model.AnimatorModelState;
 
@@ -17,6 +22,7 @@ import model.AnimatorModelState;
  */
 public class NewInteractiveAnimatorGraphicsView extends InteractiveAnimatorGraphicsView
         implements NewInteractiveView {
+  private JLabel editStatusLabel;
   private JTextArea editText;
   private JButton editButton;
 
@@ -32,18 +38,21 @@ public class NewInteractiveAnimatorGraphicsView extends InteractiveAnimatorGraph
 
     // set up edit panel
     JPanel editPanel = new JPanel();
-    editPanel.setLayout(new FlowLayout());
+    editPanel.setLayout(new BorderLayout());
 
     editText = new JTextArea(30, 35);
     JScrollPane scrollPane = new JScrollPane(editText);
     editText.setLineWrap(true);
     scrollPane.setBorder(BorderFactory.createTitledBorder("Describe shape and motions " +
             "to be added"));
-    editPanel.add(scrollPane);
+    editPanel.add(scrollPane, BorderLayout.CENTER);
 
     editButton = new JButton("Add Edits");
     editButton.setActionCommand("Edit Button");
-    editPanel.add(editButton);
+    editPanel.add(editButton, BorderLayout.SOUTH);
+
+    editStatusLabel = new JLabel("");
+    editPanel.add(editStatusLabel, BorderLayout.NORTH);
 
     super.add(editPanel, BorderLayout.LINE_END);
   }

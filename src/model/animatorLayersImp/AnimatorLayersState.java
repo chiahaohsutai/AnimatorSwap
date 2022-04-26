@@ -11,6 +11,15 @@ import model.Shape;
 public interface AnimatorLayersState extends AnimatorModel {
 
   /**
+   * Gets a copy of the shape with the given name.
+   *
+   * @param name is the name/id of the shape
+   * @return a copy of the shape with the given name
+   * @throws IllegalArgumentException if the name is null or not in the animator
+   */
+  Shape getShapeByName(String name);
+
+  /**
    * Gets the layer at which the shape resides.
    *
    * @param name is the name/id of the shape.

@@ -7,7 +7,7 @@ import java.util.List;
 
 import model.AnimatorModel;
 import model.Shape;
-import view.InteractiveAnimatorGraphicsView;
+import view.InteractiveView;
 
 /**
  * A class for controlling an interactive version of the Animator program. An Interactive controller
@@ -17,14 +17,14 @@ import view.InteractiveAnimatorGraphicsView;
  */
 public class InteractiveVisualController implements VisualAnimatorController, ActionListener {
 
-  private final double tickRate;
-
-  private boolean repeated;
-  private final List<Shape> originalShapes;
-  private AnimatorModel model;
-  private InteractiveAnimatorGraphicsView view;
-  private boolean isPaused = false;
-  private boolean isReset = false;
+  // edit: changed types to the interface instead of concrete classes (looser coupling)
+  protected final double tickRate;
+  protected boolean repeated;
+  protected final List<Shape> originalShapes;
+  protected AnimatorModel model;
+  protected InteractiveView view;
+  protected boolean isPaused = false;
+  protected boolean isReset = false;
 
   /**
    * Constructor for a SimpleAnimatorController.
@@ -33,7 +33,7 @@ public class InteractiveVisualController implements VisualAnimatorController, Ac
    * @param view        View
    * @param ticksPerSec tickRate
    */
-  public InteractiveVisualController(AnimatorModel model, InteractiveAnimatorGraphicsView view,
+  public InteractiveVisualController(AnimatorModel model, InteractiveView view,
                                      double ticksPerSec) {
     this.model = model;
     this.view = view;
@@ -134,7 +134,6 @@ public class InteractiveVisualController implements VisualAnimatorController, Ac
       case "Loop":
         loop();
         break;
-
       default:
         throw new IllegalStateException("Invalid Command");
     }

@@ -1,7 +1,10 @@
 package controller;
 
-import model.AnimatorModel;
-import view.InteractiveAnimatorGraphicsView;
+import java.awt.event.ActionEvent;
+
+import io.EditInputReader;
+import model.animatorLayersImp.AnimatorLayers;
+import view.NewInteractiveView;
 
 /**
  * Represents the concrete implementation of the controller for the interactive view with the
@@ -19,14 +22,31 @@ public class NewInteractiveVisualController extends InteractiveVisualController
    * @param view        View
    * @param ticksPerSec tickRate
    */
-  public NewInteractiveVisualController(AnimatorModel model, InteractiveAnimatorGraphicsView view,
+  public NewInteractiveVisualController(AnimatorLayers model,
+                                        NewInteractiveView view,
                                         double ticksPerSec) {
     super(model, view, ticksPerSec);
   }
 
   @Override
-  public String processEdit(String edits) {
+  public void processEdit(String edits) {
+    StringBuilder status = new StringBuilder();
+    EditInputReader inputReader = new EditInputReader((AnimatorLayers)model);
 
-    return null;
+    inputReader.readInput(edits);
+  }
+
+  @Override
+  public void actionPerformed(ActionEvent e) {
+    String command = e.getActionCommand();
+
+    if (command.equals("Edit Button")) {
+      String newEdits = ((NewInteractiveView)view).getEdits();
+      processEdit(newEdits);
+    }
+
+    else {
+      super.actionPerformed(e);
+    }
   }
 }

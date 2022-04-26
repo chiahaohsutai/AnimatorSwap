@@ -2,11 +2,14 @@ package view;
 
 import java.awt.event.ActionListener;
 
+// edit: made InteractiveView extend VisualView because
+// in other places where InteractiveView is used, we have access to the helpful methods that are
+// offered in the VisualView interface
 /**
  * An interface for adding functionality to a view. The interactive view supports the ability
  * to pause, play, loop and rewind an Animation.
  */
-public interface InteractiveView {
+public interface InteractiveView extends VisualView {
 
   /**
    * Switch between pause and play text for the pause button. Lets the pause button change its text

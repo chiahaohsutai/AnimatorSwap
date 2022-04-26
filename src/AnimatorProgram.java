@@ -141,8 +141,7 @@ public class AnimatorProgram {
     } else if (view instanceof NewInteractiveVisualController) {
       NewInteractiveAnimatorGraphicsView newInteractiveAnimatorGraphicsView =
               (NewInteractiveAnimatorGraphicsView) view;
-      controller = new NewInteractiveVisualController(
-              model, newInteractiveAnimatorGraphicsView, inputSpeed);
+      //controller = new NewInteractiveVisualController
     } else if (view instanceof VisualView) {
       VisualView visualView = (VisualView) view;
       controller = new InteractiveController(model, visualView, inputSpeed);

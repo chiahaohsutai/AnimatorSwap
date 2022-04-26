@@ -5,7 +5,12 @@ below. The model is able to track the laying on the shapes and likewise transmit
 information to the views. The text view and SVG view both are able to respect the layering of the
 shapes as indicated by the model. 
 
-The interactive view .... 
+Adding the add shape feature to the interactive view was successful, you can find more details
+about the implementation below. Here is a very high level overview. The new GUI takes in text and 
+passes it to the controller. The controller then processes the string and makes the corresponding
+changes to the model, which leads to the shapes and motions being added to the currently playing
+animation. The controller uses an object called EditInputReader that functions similarly to the 
+AnimationFileReader to process the input.
 
 ### Challenges or issues with the code.
 

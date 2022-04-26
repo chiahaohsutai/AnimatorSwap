@@ -16,8 +16,6 @@ import view.InteractiveView;
  * track of a copy of the orginalShapes list to reset an animation.
  */
 public class InteractiveVisualController implements VisualAnimatorController, ActionListener {
-
-  // edit: changed types to the interface instead of concrete classes (looser coupling)
   protected final double tickRate;
   protected boolean repeated;
   protected final List<Shape> originalShapes;

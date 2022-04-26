@@ -5,7 +5,13 @@ import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 
-import javax.swing.*;
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+import javax.swing.JLabel;
+import javax.swing.JScrollPane;
+import javax.swing.ScrollPaneConstants;
+
 
 import model.AnimatorModelState;
 
@@ -55,8 +61,8 @@ public class AnimatorGraphicsView extends JFrame implements VisualView, Animator
     scrollPane.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_AS_NEEDED);
     scrollPane.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_AS_NEEDED);
 
-    // animation panel will be playing left side of center
-    this.add(scrollPane, BorderLayout.LINE_START);
+    // animation panel will be playing in center
+    this.add(scrollPane, BorderLayout.CENTER);
 
     shapePanel.takeCommandList(model.getCommandMap());
 

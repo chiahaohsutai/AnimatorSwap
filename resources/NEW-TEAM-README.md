@@ -10,7 +10,7 @@ The interactive view ....
 ### Challenges or issues with the code.
 
 There were some challenges with the code. The code was not 100% functional. When we tried running
-the program we encounter a very buggy behavior were the speed was set to a default even if declared
+the program we encounter a very buggy behavior where the speed was set to a default even if declared
 otherwise. Moreover, the motion of shapes was sometimes incorrect for some provided text
 files from assignment 5. In the interactive view, some buttons did not work and there was no option
 for increasing the speed of the animation (some required features from the previous 
@@ -60,4 +60,24 @@ possible. For the text view, also did not change the existing implementation. Th
 implementation delegates the formatting of the text to the model. Hence, we just re-implemented the 
 method that originally printed the text, and added layering to it. 
 
-### The Graphical View.
+### Editing the Visual View
+
+The ShapePanel (the JPanel where the actual animation takes place) is housed in the very
+first view that was required for the Easy Animator application, which is the AnimatorGraphicsView 
+(the visual view). We edited the ShapePanel to accommodate layering. ________________
+
+Just by editing the ShapePanel, all visual views will be able to support the layering feature.
+This is because in this code, each new view extends the previous version. For example, the 
+InteractiveAnimatorGraphicsView (the interactive view implementation) extends the 
+AnimatorGraphicsView (the visual view implementation). Therefore, the ShapePanel and the way it
+displays an animation in AnimatorGraphicsView is inherited by the Interactive AnimatorGraphicsView.
+The same logic can be applied to how the new interactive view with the ability to add shapes to the
+currently playing animation will support layering.
+
+### Editing the Interactive View.
+
+The assignment required us to implement the additional features of layering and adding shapes to 
+the currently playing animation. Layering is accommodated by this new interactive view according to
+explanation in the previous section. To add the new feature of adding shapes to the currently 
+playing animation, we used the square design pattern since we wanted followed the same 
+design that the team used to implement their interactive view, which was via inheritance.

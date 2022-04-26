@@ -108,6 +108,15 @@ public class CommandTest {
   }
 
   @Test
+  public void testGetShape() {
+    Shape square = new Rectangle("", new CartPt(0.0D, 0.0D),
+            new Size(10.0D, 10.0D), this.red);
+    Command c = new Command(square, 0.0D, 10.0D,
+            new CartPt(100.0D, 10.0D), new Size(10.0D, 10.0D), this.red);
+    assertEquals(square, c.getShape());
+  }
+
+  @Test
   public void testToString() {
     Shape square = new Rectangle("C", new CartPt(0.0D, 0.0D),
             new Size(10.0D, 10.0D), this.red);

@@ -13,6 +13,7 @@ import controller.InteractiveController;
 import model.AnimatorModel;
 import model.SimpleAnimatorModel;
 import io.AnimationFileReader;
+import model.animatorLayersImp.AnimatorLayers;
 import view.AnimatorGraphicsView;
 import view.AnimatorTextView;
 import view.AnimatorView;
@@ -141,7 +142,8 @@ public class AnimatorProgram {
     } else if (view instanceof NewInteractiveVisualController) {
       NewInteractiveAnimatorGraphicsView newInteractiveAnimatorGraphicsView =
               (NewInteractiveAnimatorGraphicsView) view;
-      //controller = new NewInteractiveVisualController
+      controller = new NewInteractiveVisualController(
+              (AnimatorLayers)model, newInteractiveAnimatorGraphicsView, inputSpeed);
     } else if (view instanceof VisualView) {
       VisualView visualView = (VisualView) view;
       controller = new InteractiveController(model, visualView, inputSpeed);
@@ -169,6 +171,4 @@ public class AnimatorProgram {
     System.exit(0);
 
   }
-
-
 }

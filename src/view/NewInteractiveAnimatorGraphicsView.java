@@ -48,7 +48,7 @@ public class NewInteractiveAnimatorGraphicsView extends InteractiveAnimatorGraph
     editPanel.add(scrollPane, BorderLayout.CENTER);
 
     editButton = new JButton("Add Edits");
-    editButton.setActionCommand("Edit Button");
+    editButton.setActionCommand("Edit");
     editPanel.add(editButton, BorderLayout.SOUTH);
 
     editStatusLabel = new JLabel("");
@@ -68,5 +68,10 @@ public class NewInteractiveAnimatorGraphicsView extends InteractiveAnimatorGraph
     String edits = editText.getText();
     editText.setText("");
     return edits;
+  }
+
+  @Override
+  public void setEditStatusLabel(String update) {
+    editStatusLabel.setText(update);
   }
 }

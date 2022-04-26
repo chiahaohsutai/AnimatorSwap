@@ -90,6 +90,16 @@ public class Command {
     return tick > startTick && tick <= endTick;
   }
 
+  // edit : added a getter method to get the shape being transformed
+
+  /**
+   * Gets the shape that is being transformed.
+   *
+   * @return a copy of the shape.
+   */
+  public Shape getShape() {
+    return shape.createShape();
+  }
 
   /**
    * Gets the average distance change for this command.

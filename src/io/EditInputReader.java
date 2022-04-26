@@ -16,7 +16,19 @@ import model.animatorLayersImp.AnimatorLayers;
 import view.NewInteractiveView;
 
 /**
- * Represents a text reader that processes the user inputted text describing the
+ * Represents a text reader that processes the user inputted text describing the shapes and motions
+ * to be added to the currently playing animation. This text reader operates similarly to the
+ * AnimationFileReader.
+ * The input to add a shape must be formatted as the following:
+ * "(shape type) name (shape name) min-x (x-position) min-y (y-position)
+ * width (shape width) height (shape height) color (color as r,g,b) from (start time) to (end time)"
+ * The input to add a motion must be formatted as the following:
+ * "(transform type) name (shape name) (moveto/colorto/scaleto based on transform type)
+ * (start state according to transform type) (end state according to transform type)
+ * from (start time) to (end time)"
+ * The description of shapes and motions to be added must be entirely correct for them to be added
+ * to the currently playing animation. If the description contains incorrect formatting/information,
+ * nothing will be done to the animation and the user will be prompted to enter a different input.
  */
 public class EditInputReader extends AnimationFileReader implements ReadEdits{
 

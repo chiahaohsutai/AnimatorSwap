@@ -2,8 +2,8 @@
 
 Adding the layering to the model was successful, you can find more details about the implementation
 below. The model is able to track the laying on the shapes and likewise transmit the layering
-information to the views. The text view and SVG view both are able to respect the layering of the
-shapes as indicated by the model. 
+information to the views. The text view works appropriately; however, we have no way to check if the
+SVG works because the SVG implementation by the providers is not functional. 
 
 Adding the add shape feature to the interactive view was successful, you can find more details
 about the implementation below. Here is a very high level overview. The new GUI takes in text and 
@@ -19,7 +19,11 @@ the program we encounter a very buggy behavior where the speed was set to a defa
 otherwise. Moreover, the motion of shapes was sometimes incorrect for some provided text
 files from assignment 5. In the interactive view, some buttons did not work and there was no option
 for increasing the speed of the animation (some required features from the previous 
-assignments were missing). 
+assignments were missing). Additionally, the input order for the program (-view, -in, -out) does
+work as expected. The order of input arguments does seem to matter when working with the SVG view.
+Another issue that should be pointed out is that shapes don't have a start tick or end tick. Hence, 
+once a shape is added, it will appear in the animation even if declared otherwise (i.e. if the 
+current tick is 0 and the shape appears in tick 10, the shape will be visible at tick 0).
 
 ### Changes to the AnimationFileReader and Builder.
 
@@ -131,7 +135,7 @@ the text box will be added. Essentially, the description entered by the user mus
 in order to add to the currently playing animation.
 
 
-------- the model does not check start or ends times for shapes.
 ------- does not maintain sequence invariant. 
 ------- theres some printing to the console which comes from their model.
-
+------- all the views but the text view are buggy, in the visual view shapes can sometimes 
+------- teleport and move inconsistently.

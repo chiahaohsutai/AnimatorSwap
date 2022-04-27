@@ -22,7 +22,7 @@ import model.AnimatorModelState;
  * list of shapes.
  */
 public class AnimatorGraphicsView extends JFrame implements VisualView, AnimatorView {
-  private final AnimatorModelState model;
+  protected final AnimatorModelState model;
   private JButton quitButton;
   protected JPanel buttonPanel;
   protected JPanel timePanel;

@@ -19,6 +19,7 @@ import view.AnimatorTextView;
 import view.AnimatorView;
 import view.LayerViews.NewInteractiveAnimatorGraphicsView;
 import view.InteractiveAnimatorGraphicsView;
+import view.LayerViews.NewVisualView;
 import view.SVGView;
 import io.AnimatorModelBuilder;
 import view.VisualView;
@@ -81,7 +82,7 @@ public class AnimatorProgram {
 
             case "visual":
               try {
-                view = new AnimatorGraphicsView(model);
+                view = new NewVisualView((AnimatorLayers)model);
               } catch (IllegalArgumentException e) {
                 displayErrorMsg("Model is null");
               }
@@ -89,21 +90,11 @@ public class AnimatorProgram {
 
             case "interactive":
               try {
-                view = new InteractiveAnimatorGraphicsView(model);
-              } catch (IllegalArgumentException e) {
-                displayErrorMsg("Model is null");
-              }
-              break;
-
-              // edit : adding interactive view with new features into main
-            case "new-interactive":
-              try {
                 view = new NewInteractiveAnimatorGraphicsView(model);
               } catch (IllegalArgumentException e) {
                 displayErrorMsg("Model is null");
               }
               break;
-
             default:
               displayErrorMsg("Invalid view");
           }
@@ -141,14 +132,8 @@ public class AnimatorProgram {
       controller = new NewInteractiveVisualController(
               (AnimatorLayers)model, newInteractiveAnimatorGraphicsView, inputSpeed);
     }
-    else if (view instanceof InteractiveAnimatorGraphicsView) {
-      InteractiveAnimatorGraphicsView interactiveAnimatorGraphicsView =
-              (InteractiveAnimatorGraphicsView) view;
-      controller = new InteractiveVisualController(
-              model, interactiveAnimatorGraphicsView, inputSpeed);
-    }
-    else if (view instanceof VisualView) {
-      VisualView visualView = (VisualView) view;
+    else if (view instanceof NewVisualView) {
+      NewVisualView visualView = (NewVisualView) view;
       controller = new InteractiveController(model, visualView, inputSpeed);
     }
     else if (view instanceof AnimatorTextView) {

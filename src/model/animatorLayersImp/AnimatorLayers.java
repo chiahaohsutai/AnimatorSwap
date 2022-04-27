@@ -2,6 +2,7 @@ package model.animatorLayersImp;
 
 import java.util.List;
 import model.AnimatorModel;
+import model.Command;
 import model.Shape;
 
 /**
@@ -29,4 +30,33 @@ public interface AnimatorLayers extends AnimatorLayersState {
    * @throws IllegalArgumentException if any dimension is 0 or negative.
    */
   void setCanvasDim(int width, int height);
+
+  /**
+   * Queues a shape to be added to the model.
+   *
+   * @param shapes an array of shapes to be added queued to the model.
+   * @throws IllegalArgumentException if the given shape list is null.
+   * @throws IllegalArgumentException if a Shape with the same name already exists in the model.
+   */
+  void queueShapes(Shape... shapes);
+
+  /**
+   * Queues a command to be added to a shape in the model. You can only add commands to newly added
+   * shapes. Meaning that you may only add new transforms to shape that where added through
+   * queueing.
+   *
+   * @param commands an array of commands to be queued to the model.
+   * @throws IllegalArgumentException if the given Command is null.
+   */
+  void queueCommands(Command... commands);
+
+  /**
+   * Clears the shapes in the queue.
+   */
+  void clearShapesQueue();
+
+  /**
+   * Clears the commands in the queue.
+   */
+  void clearCommandsQueue();
 }

@@ -129,3 +129,9 @@ invalid, that means there was an invalid shape or motion addition in the descrip
 happens, the temp lists will be emptied and no shapes or motions that were entered by the user in 
 the text box will be added. Essentially, the description entered by the user must all be correct
 in order to add to the currently playing animation.
+
+
+------- the model does not check start or ends times for shapes.
+------- does not maintain sequence invariant. 
+------- theres some printing to the console which comes from their model.
+

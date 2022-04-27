@@ -6,6 +6,8 @@ import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 import java.util.TreeMap;
+import java.util.stream.Collectors;
+import model.Command;
 import model.Shape;
 import model.SimpleAnimatorModel;
 
@@ -15,6 +17,8 @@ import model.SimpleAnimatorModel;
  */
 public class AnimatorLayer extends SimpleAnimatorModel implements AnimatorLayers {
   private final Map<Integer, List<String>> layering;
+  private final List<Shape> newShapes;
+  private final List<Command> newCommands;
 
   /**
    * Instantiate a new Animator with the same abilities as the SimpleAnimatorModel. This model
@@ -26,6 +30,8 @@ public class AnimatorLayer extends SimpleAnimatorModel implements AnimatorLayers
     // casting is safe since ShapeLayers is a subtype of shapes.
     super(shapes);
     this.layering = new TreeMap<>(Integer::compareTo);
+    this.newShapes = new ArrayList<>();
+    this.newCommands = new ArrayList<>();
     layering.put(1, new ArrayList<>());
   }
 
@@ -111,12 +117,68 @@ public class AnimatorLayer extends SimpleAnimatorModel implements AnimatorLayers
   }
 
   @Override
+  public boolean checkShapeQueue() {
+    return newShapes.size() > 0;
+  }
+
+  @Override
+  public boolean checkCommandQueue() {
+    return newCommands.size() > 0;
+  }
+
+  @Override
+  public List<Shape> getShapesQueue() {
+    return newShapes.stream().map(Shape::createShape).collect(Collectors.toList());
+  }
+
+  @Override
+  public List<Command> getCommandsQueue() {
+    return newCommands.stream().map(Command::new).collect(Collectors.toList());
+  }
+
+  @Override
   public void setCanvasDim(int width, int height) {
     if (width <= 0 || height <= 0) {
       throw new IllegalArgumentException("Dimensions are invalid");
     }
     this.canvasWidth = width;
     this.canvasHeight = height;
+  }
+
+  @Override
+  public void queueShapes(Shape... shapes) {
+    if (Arrays.stream(shapes).anyMatch(Objects::isNull)) {
+      throw new IllegalArgumentException("Shapes cannot be null");
+    }
+    List<String> names = this.shapes.stream().map(Shape::getName).collect(Collectors.toList());
+    if (Arrays.stream(shapes).anyMatch(s -> names.contains(s.getName()))) {
+      throw new IllegalArgumentException("At least one shape has the same name as an existing " +
+              "shape in the animator.");
+    }
+    newShapes.addAll(Arrays.asList(shapes));
+  }
+
+  @Override
+  public void queueCommands(Command... commands) {
+    if (Arrays.stream(commands).anyMatch(Objects::isNull)) {
+      throw new IllegalArgumentException("Commands cannot be null");
+    }
+    List<String> names = newShapes.stream().map(Shape::getName).collect(Collectors.toList());
+    if (Arrays.stream(commands).noneMatch(c -> names.contains(c.getShape().getName()))) {
+      throw new IllegalArgumentException("Invalid shape id for the transform.\nYou need to " +
+              "add the shape before transforming it");
+    }
+    newCommands.addAll(Arrays.asList(commands));
+  }
+
+  @Override
+  public void clearShapesQueue() {
+    newShapes.clear();
+  }
+
+  @Override
+  public void clearCommandsQueue() {
+    newCommands.clear();
   }
 
   @Override

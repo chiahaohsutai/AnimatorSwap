@@ -48,7 +48,7 @@ public class InteractiveVisualController implements VisualAnimatorController, Ac
    * @param shapes List of shapes to be copied
    * @return List copy of given shape list
    */
-  private List<Shape> copyShapes(List<Shape> shapes) {
+  protected List<Shape> copyShapes(List<Shape> shapes) {
     List<Shape> ret = new ArrayList<>();
     for (Shape s : shapes) {
       ret.add(s.createShape());
@@ -87,7 +87,6 @@ public class InteractiveVisualController implements VisualAnimatorController, Ac
 
     }
     while (repeated || isReset);
-
   }
 
   @Override

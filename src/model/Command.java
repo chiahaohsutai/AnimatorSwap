@@ -50,7 +50,7 @@ public class Command {
    * @param endSize Size ending size
    * @param startColor Color starting color
    * @param endColor Color ending color
-   *                    * @throws IllegalArgumentException if any fields given are null.
+   * @throws IllegalArgumentException if any fields given are null.
    */
   public Command(Shape shape, double startTick, double endTick, CartPt startLoc, CartPt endLoc,
                  Size startSize, Size endSize, Color startColor, Color endColor) {
@@ -61,9 +61,7 @@ public class Command {
       throw new IllegalArgumentException("Invalid arguments");
     }
     // Test for if start location isn't actually where shape starts
-
     this.shape = shape;
-
     this.startTick = startTick;
     this.endTick = endTick;
 
@@ -78,6 +76,23 @@ public class Command {
     this.startColor = startColor;
     this.endColor = endColor;
     //this.deltaColor = setAvgDeltaColor();
+  }
+
+  /**
+   * Copy constructor.
+   *
+   * @param c is the command to be copied.
+   */
+  public Command(Command c) {
+    this.shape = c.getShape();
+    this.startTick = c.getStartTime();
+    this.endTick = c.getEndTime();
+    this.startLoc = c.getStartLoc();
+    this.endLoc = c.getEndLoc();
+    this.startSize = c.getStartSize();
+    this.endSize = c.getEndSize();
+    this.startColor = c.getStartColor();
+    this.endColor = c.getEndColor();
   }
 
   /**

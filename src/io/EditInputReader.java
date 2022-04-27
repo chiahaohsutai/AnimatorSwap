@@ -31,11 +31,10 @@ import view.LayerViews.NewInteractiveView;
  * nothing will be done to the animation and the user will be prompted to enter a different input.
  */
 public class EditInputReader extends AnimationFileReader implements ReadEdits {
-
-  AnimatorLayers model;
-  NewInteractiveView view;
-  List<Shape> shapesAddedByClientTemp;
-  List<Command> commandsAddedByClientTemp;
+  private final AnimatorLayers model;
+  private final NewInteractiveView view;
+  private final List<Shape> shapesAddedByClientTemp;
+  private final List<Command> commandsAddedByClientTemp;
 
   /**
    *
@@ -162,14 +161,21 @@ public class EditInputReader extends AnimationFileReader implements ReadEdits {
           view.setEditStatusLabel("Invalid input. Please try again.");
       }
     }
-
-    // add each shape inputted by user to the model.
-    model.addShape(shapesAddedByClientTemp.toArray(Shape[]::new));
-
-    // add each motion inputted by user to the model.
-    for (Command singleMotion : commandsAddedByClientTemp) {
-      Shape shapeBeingTransformed = singleMotion.getShape();
-      model.addCommand(shapeBeingTransformed, singleMotion);
+    try {
+      if (shapesAddedByClientTemp.size() > 0) {
+        // add each shape inputted by user to the model.
+        model.queueShapes(shapesAddedByClientTemp.toArray(Shape[]::new));
+      }
+    } catch (IllegalArgumentException e) {
+      view.setEditStatusLabel(e.getMessage());
+    }
+    try {
+      if (commandsAddedByClientTemp.size() > 0) {
+        // add each motion inputted by user to the model.
+        model.queueCommands(commandsAddedByClientTemp.toArray(Command[]::new));
+      }
+    } catch (IllegalArgumentException e) {
+      view.setEditStatusLabel(e.getMessage());
     }
   }
 

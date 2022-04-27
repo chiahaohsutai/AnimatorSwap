@@ -2,6 +2,7 @@ package model.animatorLayersImp;
 
 import java.util.List;
 import model.AnimatorModel;
+import model.Command;
 import model.Shape;
 
 /**
@@ -37,4 +38,32 @@ public interface AnimatorLayersState extends AnimatorModel {
    *     shapes at the given layer.
    */
   List<Shape> getShapesAtLayer(int layerNumber);
+
+  /**
+   * Checks if any shapes have been queued to the animator.
+   *
+   * @return true if there are new shapes to be added to the animator.
+   */
+  boolean checkShapeQueue();
+
+  /**
+   * Checks if there are any commands to be queued to the animator.
+   *
+   * @return true if there exists new commands ro be added to the animator.
+   */
+  boolean checkCommandQueue();
+
+  /**
+   * Get the shapes queue.
+   *
+   * @returns all the shapes in the queue.
+   */
+  List<Shape> getShapesQueue();
+
+  /**
+   * Get the commands queue.
+   *
+   * @returns all the commands in the queue.
+   */
+  List<Command> getCommandsQueue();
 }

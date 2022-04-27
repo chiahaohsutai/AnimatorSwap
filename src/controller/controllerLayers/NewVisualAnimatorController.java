@@ -1,4 +1,6 @@
-package controller;
+package controller.controllerLayers;
+
+import controller.VisualAnimatorController;
 
 /**
  * Represents a controller for a GUI for the interactive view of an animation with the additional

@@ -1,4 +1,6 @@
-package view;
+package view.LayerViews;
+
+import view.InteractiveView;
 
 /**
  * An interface for adding functionality to an interactive view with the additional feature of

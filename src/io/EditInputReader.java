@@ -13,7 +13,7 @@ import model.Rectangle;
 import model.Shape;
 import model.Size;
 import model.animatorLayersImp.AnimatorLayers;
-import view.NewInteractiveView;
+import view.LayerViews.NewInteractiveView;
 
 /**
  * Represents a text reader that processes the user inputted text describing the shapes and motions

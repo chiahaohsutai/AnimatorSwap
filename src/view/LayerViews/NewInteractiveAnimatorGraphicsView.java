@@ -1,4 +1,4 @@
-package view;
+package view.LayerViews;
 
 import java.awt.Dimension;
 import java.awt.BorderLayout;
@@ -11,6 +11,7 @@ import javax.swing.BorderFactory;
 import javax.swing.JLabel;
 
 import model.AnimatorModelState;
+import view.InteractiveAnimatorGraphicsView;
 
 /**
  * Represents another version of the interactive view for an animation. This version consists of

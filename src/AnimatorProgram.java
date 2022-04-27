@@ -6,7 +6,7 @@ import javax.swing.JFrame;
 
 import controller.AnimatorController;
 import controller.InteractiveVisualController;
-import controller.NewInteractiveVisualController;
+import controller.controllerLayers.NewInteractiveVisualController;
 import controller.SVGController;
 import controller.TextController;
 import controller.InteractiveController;
@@ -17,7 +17,7 @@ import model.animatorLayersImp.AnimatorLayers;
 import view.AnimatorGraphicsView;
 import view.AnimatorTextView;
 import view.AnimatorView;
-import view.NewInteractiveAnimatorGraphicsView;
+import view.LayerViews.NewInteractiveAnimatorGraphicsView;
 import view.InteractiveAnimatorGraphicsView;
 import view.SVGView;
 import io.AnimatorModelBuilder;

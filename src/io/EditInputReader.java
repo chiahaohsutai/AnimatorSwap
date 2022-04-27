@@ -30,7 +30,7 @@ import view.NewInteractiveView;
  * to the currently playing animation. If the description contains incorrect formatting/information,
  * nothing will be done to the animation and the user will be prompted to enter a different input.
  */
-public class EditInputReader extends AnimationFileReader implements ReadEdits{
+public class EditInputReader extends AnimationFileReader implements ReadEdits {
 
   AnimatorLayers model;
   NewInteractiveView view;
@@ -46,6 +46,7 @@ public class EditInputReader extends AnimationFileReader implements ReadEdits{
     shapesAddedByClientTemp = new ArrayList<>();
     commandsAddedByClientTemp = new ArrayList<>();
   }
+
   @Override
   public void readInput(String edits) {
     Scanner s;
@@ -156,23 +157,21 @@ public class EditInputReader extends AnimationFileReader implements ReadEdits{
             view.setEditStatusLabel("Invalid input. Please try again.");
             return;
           }
-            break;
-          }
+          break;
+        default:
+          view.setEditStatusLabel("Invalid input. Please try again.");
       }
-
-      // add each shape inputted by user to the model.
-      for (Shape singleShape : shapesAddedByClientTemp) {
-        model.addShape(singleShape);
-      }
-
-      // add each motion inputted by user to the model.
-      for (Command singleMotion : commandsAddedByClientTemp) {
-        Shape shapeBeingTransformed = singleMotion.getShape();
-        model.addCommand(shapeBeingTransformed, singleMotion);
-      }
-
-      view.setEditStatusLabel("Shapes and motions successfully added.");
     }
+
+    // add each shape inputted by user to the model.
+    model.addShape(shapesAddedByClientTemp.toArray(Shape[]::new));
+
+    // add each motion inputted by user to the model.
+    for (Command singleMotion : commandsAddedByClientTemp) {
+      Shape shapeBeingTransformed = singleMotion.getShape();
+      model.addCommand(shapeBeingTransformed, singleMotion);
+    }
+  }
 
   /**
    * Checks if the shape exists in the animation.

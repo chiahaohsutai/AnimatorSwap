@@ -40,78 +40,14 @@ public class NewInteractiveVisualController extends InteractiveVisualController
   }
 
   @Override
-  public void startProgram() {
-    view.makeVisible();
-    view.setListeners(this);
-
-    // Determine last tick from model
-    System.out.println(model.getLastTick());
-
-    do {
-      isReset = false;
-      double currentTick = 0;
-      model.setShapeList(copyShapes(originalShapes));
-
-      while (currentTick < model.getLastTick() && !isReset) {
-        if (isPaused) {
-          // do nothing
-        } else {
-          try {
-            Thread.sleep((long) tickRate);
-          } catch (InterruptedException e) {
-            throw new IllegalStateException("Cannot sleep");
-          }
-          view.updatePanel(currentTick);
-          view.refresh();
-          currentTick += tickRate;
-        }
-      }
-
-    }
-    while (repeated || isReset);
-
-  }
-
-  /**
-   * Copies a list of shape into a new List.
-   *
-   * @param shapes List of shapes to be copied
-   * @return List copy of given shape list
-   */
-  private List<Shape> copyShapes(List<Shape> shapes) {
-    List<Shape> ret = new ArrayList<>();
-    for (Shape s : shapes) {
-      ret.add(s.createShape());
-    }
-    return ret;
-  }
-
-  @Override
   public void actionPerformed(ActionEvent e) {
     String command = e.getActionCommand();
 
-    switch (command) {
-      case "Play":
-      case "Pause":
-        pause();
-        view.togglePausePlay();
-        break;
-
-      case "Rewind":
-        rewind();
-        break;
-
-      case "Loop":
-        loop();
-        break;
-
-      case "Edit":
-        String newEdits = ((NewInteractiveView) view).getEdits();
-        processEdit(newEdits);
-        break;
-
-      default:
-        throw new IllegalStateException("Invalid Command");
+    if (command.equals("Edit")) {
+      String newEdits = ((NewInteractiveView) view).getEdits();
+      processEdit(newEdits);
+    } else {
+      super.actionPerformed(e);
     }
   }
 }

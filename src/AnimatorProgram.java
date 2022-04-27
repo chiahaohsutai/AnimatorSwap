@@ -134,20 +134,24 @@ public class AnimatorProgram {
     if (view instanceof SVGView) {
       SVGView svgView = new SVGView(model, outfileName);
       controller = new SVGController(svgView, inputSpeed);
-    } else if (view instanceof InteractiveAnimatorGraphicsView) {
-      InteractiveAnimatorGraphicsView interactiveAnimatorGraphicsView =
-              (InteractiveAnimatorGraphicsView) view;
-      controller = new InteractiveVisualController(
-              model, interactiveAnimatorGraphicsView, inputSpeed);
-    } else if (view instanceof NewInteractiveVisualController) {
+    }
+    else if (view instanceof NewInteractiveAnimatorGraphicsView) {
       NewInteractiveAnimatorGraphicsView newInteractiveAnimatorGraphicsView =
               (NewInteractiveAnimatorGraphicsView) view;
       controller = new NewInteractiveVisualController(
               (AnimatorLayers)model, newInteractiveAnimatorGraphicsView, inputSpeed);
-    } else if (view instanceof VisualView) {
+    }
+    else if (view instanceof InteractiveAnimatorGraphicsView) {
+      InteractiveAnimatorGraphicsView interactiveAnimatorGraphicsView =
+              (InteractiveAnimatorGraphicsView) view;
+      controller = new InteractiveVisualController(
+              model, interactiveAnimatorGraphicsView, inputSpeed);
+    }
+    else if (view instanceof VisualView) {
       VisualView visualView = (VisualView) view;
       controller = new InteractiveController(model, visualView, inputSpeed);
-    } else if (view instanceof AnimatorTextView) {
+    }
+    else if (view instanceof AnimatorTextView) {
       AnimatorTextView textView = (AnimatorTextView) view;
       controller = new TextController(textView);
     }

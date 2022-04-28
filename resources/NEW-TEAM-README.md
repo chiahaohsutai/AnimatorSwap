@@ -1,4 +1,6 @@
 # Our Implementation of New Features
+(All the code we wrote is in separate directories within each of the MVC folders and the file 
+reading and builder are in the IO folder)
 
 ## Were we able to implement the new features?
 
@@ -23,7 +25,7 @@ AnimationFileReader to process the input.
 There were some challenges with the code. We decided to continue with this code and not ask for 
 a new group's code since it did provide us with the basic requirements. We detailed what how we
 implemented the new features in this README, but the program may not run 100% correctly due to 
-the not functional portions of the team's original code. 
+the not functional portions of the provider's original code. 
 
 Here are some of the not functional parts.
 When we tried running the program we encountered a very buggy behavior where the speed 
@@ -105,7 +107,7 @@ before they are passed onto the JPanel (ShapePanel) to be drawn. Similar to the 
 this allows the interactive view to keep the same functionalities as before as well as add the 
 new feature of layering.
 
-We followed the same approach as the team did when they implemented the interactive
+We followed the same approach as the provider did when they implemented the interactive
 view, which was via inheritance, to build our. We used the square design pattern to add the new 
 feature of adding shapes to the currently playing animation. We created a new extending interface 
 and a new class that implemented this new interface while extending the previous implementation of 
@@ -145,18 +147,19 @@ then the model gets mutated. If a single input is invalid, that means there was 
 motion addition in the description. When this happens, the temp lists will be emptied and no shapes
 or motions that were entered by the user in the text box will be added. Essentially, the 
 description entered by the user must all be correct in order to add to the currently playing 
-animation. However, this mutation does not occur in the list of shapes and
-commands that hold what is actually going on in the animation. Rather, we added two lists to the 
-model to specifically hold these shapes and motions that the user wishes to add, which is where the
-mutation is occurring. Here is an explanation of how these lists come into play when the 
-animator application is being run. The team uses a Thread to serve as the "timer" of the 
-animation. The program runs by executing the drawing of the panel at a given tick (this is done
-by iterating through the list of shapes and motions stored in the model and drawing them), then the 
-thread "sleeps" for a specified delay and then executes the drawing of the panel at the next tick 
-and so on until the animation ends. The modification that we made to this is that before we are
-redrawing the panel, we check if there are shapes and motions that are stored in the 
-to include all the added shapes and motions. 
-These changes included adding shapes and
-adding motions to the animator model. By changing the model, the shapes and motions will be added
-to the currently playing animation since the ShapePanel is drawn based on the shapes in the model.
+animation. If the inputs are all valid, then the shapes and commands are added to the model
+through a queue. 
 
+The "queue" in the model are two lists that holds all the shapes and commands that the user wants 
+to add into the model. We took this approach due to the design of the existing code. 
+The provider uses a Thread to serve as the "timer" of the animation. The program runs by executing 
+the drawing of the panel at a given tick (this is done by iterating through the list of shapes and 
+motions stored in the model and drawing them), then the 
+thread "sleeps" for a specified delay and then executes the drawing of the panel at the next tick 
+and so on until the animation ends. The modification that we made in order to support adding shapes
+and transformation to the running program was checking the queue before re-drawing. 
+Before the panel gets re-drawn, we check if there are shapes or motions 
+currently queued in the model. If there are motions or shapes in the queue, then we mutate the 
+model with queued changes, and then we clear the queue. Then the panel is re-drawn in the same
+fashion as before. This approach allowed use to make minimal changes to the code and maximizing
+the amount of code we reused.

@@ -5,11 +5,13 @@
 Adding the layering to the model was successful, you can find more details about the implementation
 below. The model is able to track the laying on the shapes and likewise transmit the layering
 information to the views. The text view works appropriately; however, we have no way to check if the
-SVG works because the SVG implementation by the providers is not functional. 
+SVG works because the SVG implementation by the providers is not functional. The SVG view seems 
+functional for some files and for some other files it fails to render properly.
 
 Adding the add shape feature to the interactive view was successful, you can find more details
 about the implementation below. Here is a very high level overview. The new GUI takes in text and 
-passes it to the controller. The controller then processes the string and , which leads to the shapes and motions being added to the currently playing
+passes it to the controller. The controller then processes the string and, which leads to the 
+shapes and motions being added to the currently playing
 animation. The controller uses an object called EditInputReader that functions similarly to the 
 AnimationFileReader to process the input.
 
@@ -19,12 +21,15 @@ There were some challenges with the code. The code was not 100% functional. When
 the program we encounter a very buggy behavior where the speed was set to a default even if declared
 otherwise. Moreover, the motion of shapes was sometimes incorrect for some provided text
 files from assignment 5. In the interactive view, some buttons did not work and there was no option
-for increasing the speed of the animation (some required features from the previous 
-assignments were missing). Additionally, the input order for the program (-view, -in, -out) does
-work as expected. The order of input arguments does seem to matter when working with the SVG view.
-Another issue that should be pointed out is that shapes don't have a start tick or end tick. Hence, 
-once a shape is added, it will appear in the animation even if declared otherwise (i.e. if the 
-current tick is 0 and the shape appears in tick 10, the shape will be visible at tick 0).
+for increasing the speed of the animation. Additionally, the input order for the program 
+(-view, -in, -out) does work as expected. The order of input arguments does seem to matter when 
+working with the SVG view. Another issue that should be pointed out is that shapes don't have a 
+start tick or end tick. Hence, once a shape is added, it will appear in the animation even if 
+declared otherwise (i.e. if the current tick is 0 and the shape appears in tick 10, the shape will 
+be visible at tick 0). This also means that the shapes and transformations are not sequential. In
+order words, transportation is possible in the providers model as well as overlapping commands (
+a shape may move to two different places during the same interval). Another thing to point out is
+that the program prints the state to console. 
 
 ## Changes to the AnimationFileReader and Builder.
 
@@ -53,8 +58,8 @@ We decided to use a square pattern. We created a new extending interface and had
 implement this new interface and extend the previous implementation of the animator. This allowed us
 to maintain the already existing functionality of the animator and add the layering feature. 
 We implemented the layering by using a hashmap that stores the layer and the shapes at the layer. 
-We added some getter functions, which allowed for easy access to the layering information.
-also override some methods in the superclass in order to add make sure no leftover state of the 
+We added some getter functions, which allowed for easy access to the layering information. We
+also overrode some methods in the superclass in order to add make sure no leftover state of the 
 shapes layering is left when being added or removed from the animator. 
 
 The default layer for all shapes is set to layer 1. This means that when a shape is added, if the
@@ -72,17 +77,10 @@ method that originally printed the text, and added layering to it.
 
 ## Editing the Visual View to Support Layering Shapes.
 
-The ShapePanel (the JPanel where the actual animation takes place) is housed in the very
-first view that was required for the Easy Animator application, which is the AnimatorGraphicsView 
-(the visual view). We edited the ShapePanel to accommodate layering. 
-
-Just by editing the ShapePanel, all visual views will be able to support the layering feature.
-This is because in this code, each new view extends the previous version. For example, the 
-InteractiveAnimatorGraphicsView (the interactive view implementation) extends the 
-AnimatorGraphicsView (the visual view implementation). Therefore, the ShapePanel and the way it
-displays an animation in AnimatorGraphicsView is inherited by the Interactive AnimatorGraphicsView.
-The same logic can be applied to how the new interactive view with the ability to add shapes to the
-currently playing animation will support layering.
+Layering was implemented or added to the visual by changing the order in which the shapes are drawn.
+Before the view paints the shapes onto the canvas, the shapes are being sorted according to layer.
+This change to the visual view required us to overwrite the updatePanel method and sort the shapes
+before they are passed onto the JPanel (ShapePanel) to be drawn. 
 
 ## Editing the Interactive View to support Adding Shapes and Layering.
 
@@ -133,9 +131,3 @@ invalid, that means there was an invalid shape or motion addition in the descrip
 happens, the temp lists will be emptied and no shapes or motions that were entered by the user in 
 the text box will be added. Essentially, the description entered by the user must all be correct
 in order to add to the currently playing animation.
-
-
-------- does not maintain sequence invariant. 
-------- theres some printing to the console which comes from their model.
-------- all the views but the text view are buggy, in the visual view shapes can sometimes 
-------- teleport and move inconsistently.

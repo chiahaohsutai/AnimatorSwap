@@ -19,25 +19,37 @@ into individual classes where each class could represent a different command.
 
 ## Implementation Critique
 
-The implementation of the code was . 
-First, there are some areas, specifically in the model and controller classes where code is being 
-repeated. These functions could be abstracted to create cleaner code. Moreover, in the views, there 
-is a heavy use of inheritance between the visual views. The inheritance did create some 
-inconveniences when adding the new features. For example, when we would want to change one 
-It seems that the team did this with the goal of adding functionalities to 
-the interactive view; however, these subclasses defined new public methods which are not included in 
-any interface. ome methods return or require class types instead of interface types, which 
+The implementation of the code had some places that can be worked on. 
+First, there are some areas, specifically in the model and controller classes, where code is being 
+repeated. These functions could be abstracted to create cleaner code. Second, in the views, there 
+is heavy use of inheritance in the implementation of the visual views (i.e. the interactive 
+view extends the visual view). We decided to continue this pattern in our implementation of the new 
+features (making the new interactive view extend the previous interactive view) because we
+wanted to reuse as much as the previous code as possible. By doing this, we did run into some 
+inconveniences as we experienced a lot of type mismatch errors when calling to a superclass, which 
+would then call to its superclass. However, we do see the motive behind using inheritance; it seems 
+that the team did this with the goal of adding functionalities to the interactive view. A
+suggestion to fix this issue is to simply reuse just the JPanel displaying the animation in each of 
+the visual views instead of using extension to inherit this JPanel. Another caveat of this use of 
+inheritance is that subclasses defined new public methods which are not included in any interface. 
+Third, there are some methods that return or require class types instead of interface types, which 
 reduces flexibility from the code. 
 
 ## Documentation Critique
 
-In terms of the documentation, the majority of the code was well-documented, but in a few areas the 
+In terms of the documentation, the majority of the code was well-documented. In a few areas the 
 @return in the Javadoc was missing for the methods. However, the missing return tags did not reduce 
 the understandability of the code. The documentation of the code allowed us to understand the 
-implementation and the functionality of each object in the program. 
+implementation and the functionality of each object in the program and reuse the team's code to our
+advantage when implementing the new features.
 
-## Design/Code Strengths and Limitations
+## More Design/Code Strengths and Limitations
 
-One strength of the code is the interface segregation. No class is require to have methods that 
+A strength of the code is the interface segregation. No class is required to have methods that 
 they do not implement. As a result of this, they are not required to suppress or provide defaults 
-for functionalities they do not implement. A limitation of the design is 
+for functionalities they do not implement. A limitation of the design is a digression from the 
+MVC architecture. The model overstepped its responsibilities in some areas and performed some 
+functionalities that was supposed to be for the view. For example, the text view essentially
+delegates to the model the responsibility of creating the shape motion table and what it looks like
+and the view just simply displays it. The model is supposed to be the keeper of the data, but in 
+this specific case, it was also in charge of creating the visual aspect.

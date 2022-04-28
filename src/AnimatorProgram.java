@@ -1,29 +1,23 @@
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
-
 import javax.swing.JOptionPane;
 import javax.swing.JFrame;
-
 import controller.AnimatorController;
-import controller.InteractiveVisualController;
-import controller.controllerLayers.NewInteractiveVisualController;
+import controller.controllerlayers.NewInteractiveVisualController;
 import controller.SVGController;
 import controller.TextController;
 import controller.InteractiveController;
 import model.AnimatorModel;
 import model.SimpleAnimatorModel;
 import io.AnimationFileReader;
-import model.animatorLayersImp.AnimatorLayers;
-import model.animatorLayersImp.AnimatorLayersState;
-import view.AnimatorGraphicsView;
+import model.animatorlayersimp.AnimatorLayers;
+import model.animatorlayersimp.AnimatorLayersState;
 import view.AnimatorTextView;
 import view.AnimatorView;
-import view.LayerViews.NewInteractiveAnimatorGraphicsView;
-import view.InteractiveAnimatorGraphicsView;
-import view.LayerViews.NewVisualView;
+import view.layerviews.NewInteractiveAnimatorGraphicsView;
+import view.layerviews.NewVisualView;
 import view.SVGView;
 import io.AnimatorModelBuilder;
-import view.VisualView;
 
 /**
  * Main class for the Animator. Parses command line arguments and creates an SimpleAnimatorModel

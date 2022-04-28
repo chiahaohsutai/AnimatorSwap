@@ -1,7 +1,5 @@
-package model.animatorLayersImp;
+package model.animatorlayersimp;
 
-import java.util.List;
-import model.AnimatorModel;
 import model.Command;
 import model.Shape;
 

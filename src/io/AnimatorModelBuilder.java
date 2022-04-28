@@ -9,8 +9,8 @@ import model.Elipse;
 import model.Rectangle;
 import model.Shape;
 import model.Size;
-import model.animatorLayersImp.AnimatorLayer;
-import model.animatorLayersImp.AnimatorLayers;
+import model.animatorlayersimp.AnimatorLayer;
+import model.animatorlayersimp.AnimatorLayers;
 
 /**
  * A builder class for SimpleAnimatorModel. Uses the TweenModelBuilder interface methods to

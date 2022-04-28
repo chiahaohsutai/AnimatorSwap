@@ -1,4 +1,4 @@
-package controller.controllerLayers;
+package controller.controllerlayers;
 
 import java.awt.event.ActionEvent;
 import java.util.List;
@@ -6,9 +6,9 @@ import controller.InteractiveVisualController;
 import io.EditInputReader;
 import model.Command;
 import model.Shape;
-import model.animatorLayersImp.AnimatorLayer;
-import model.animatorLayersImp.AnimatorLayers;
-import view.LayerViews.NewInteractiveView;
+import model.animatorlayersimp.AnimatorLayer;
+import model.animatorlayersimp.AnimatorLayers;
+import view.layerviews.NewInteractiveView;
 
 /**
  * Represents the concrete implementation of the controller for the interactive view with the

@@ -53,9 +53,9 @@ advantage when implementing the new features.
 
 ## More Design/Code Strengths and Limitations
 
-A downside of the code is a small digression that we noticed from the MVC architecture. The model 
-overstepped its responsibilities in some areas and performed some functionalities that was supposed
-to be for the view. For example, the text view essentially delegates to the model the responsibility 
-of creating the shape motion table and what it looks like and the view just simply displays it. The 
-model is supposed to be the keeper of the data, but in this specific case, it was also in charge of 
-creating the visual aspect.
+Another small downside of the code that we noticed was a small digression from the MVC 
+architecture. The model overstepped its responsibilities in some areas and performed some 
+functionalities that was supposed to be for the view. For example, the text view essentially 
+delegates to the model the responsibility of creating the shape motion table and what it looks 
+like and the view just simply displays it. The model is supposed to be the keeper of the data, 
+but in this specific case, it was also in charge of creating the visual aspect.

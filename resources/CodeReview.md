@@ -19,10 +19,12 @@ into individual classes where each class could represent a different command.
 
 ## Implementation Critique
 
-The implementation of the code was clear but sometimes repetitive. There are some areas where code
-is being repeated and similar functions could be abstracted. This repetition appears in the model 
-and the controller classes. Moreover, in the views, there is a large amount of inheritance between 
-the visual views. It seems that the team did this with the goal of adding functionalities to 
+The implementation of the code was . 
+First, there are some areas, specifically in the model and controller classes where code is being 
+repeated. These functions could be abstracted to create cleaner code. Moreover, in the views, there 
+is a heavy use of inheritance between the visual views. The inheritance did create some 
+inconveniences when adding the new features. For example, when we would want to change one 
+It seems that the team did this with the goal of adding functionalities to 
 the interactive view; however, these subclasses defined new public methods which are not included in 
 any interface. ome methods return or require class types instead of interface types, which 
 reduces flexibility from the code. 

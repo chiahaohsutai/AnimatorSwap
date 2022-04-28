@@ -1,9 +1,9 @@
-package view.LayerViews;
+package view.layerviews;
 
 import java.util.Comparator;
 import java.util.List;
 import model.Shape;
-import model.animatorLayersImp.AnimatorLayersState;
+import model.animatorlayersimp.AnimatorLayersState;
 import view.AnimatorGraphicsView;
 import view.VisualView;
 

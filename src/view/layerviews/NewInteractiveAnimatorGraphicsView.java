@@ -1,4 +1,4 @@
-package view.LayerViews;
+package view.layerviews;
 
 import java.awt.Dimension;
 import java.awt.BorderLayout;
@@ -13,9 +13,8 @@ import javax.swing.JScrollPane;
 import javax.swing.BorderFactory;
 import javax.swing.JLabel;
 
-import model.AnimatorModelState;
 import model.Shape;
-import model.animatorLayersImp.AnimatorLayersState;
+import model.animatorlayersimp.AnimatorLayersState;
 import view.InteractiveAnimatorGraphicsView;
 
 /**

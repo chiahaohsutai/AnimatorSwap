@@ -1,4 +1,4 @@
-package controller.controllerLayers;
+package controller.controllerlayers;
 
 import controller.VisualAnimatorController;
 
@@ -11,8 +11,7 @@ public interface NewVisualAnimatorController extends VisualAnimatorController {
    * Process the shapes and transformations added by the client using the text box. Return the
    * status or error message.
    *
-   * @param edits the given edits to be processed
-   * @return the status or error message
+   * @param edits the given edits to be processed.
    */
   void processEdit(String edits);
 }

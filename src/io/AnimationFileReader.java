@@ -312,9 +312,13 @@ public class AnimationFileReader {
       name = id;
     }
 
-    int getLayer() { return layer; }
+    int getLayer() {
+      return layer;
+    }
 
-    String getName() { return name; }
+    String getName() {
+      return name;
+    }
   }
 
   class CanvasInfo {

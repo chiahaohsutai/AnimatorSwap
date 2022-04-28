@@ -1,4 +1,4 @@
-package model.animatorLayersImp;
+package model.animatorlayersimp;
 
 import java.util.List;
 import model.AnimatorModel;
@@ -33,9 +33,9 @@ public interface AnimatorLayersState extends AnimatorModel {
    * Gets all the shapes in the given layer.
    *
    * @param layerNumber is the layer at which you want the shapes from.
-   * @throws IllegalArgumentException if the layer number is negative or zero.
    * @return the list with all the shapes at the given layer, or an empty list if there are no
    *     shapes at the given layer.
+   * @throws IllegalArgumentException if the layer number is negative or zero.
    */
   List<Shape> getShapesAtLayer(int layerNumber);
 

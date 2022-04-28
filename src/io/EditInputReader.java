@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.InputMismatchException;
 import java.util.List;
 import java.util.Scanner;
-
 import model.CartPt;
 import model.Color;
 import model.Command;
@@ -12,8 +11,8 @@ import model.Elipse;
 import model.Rectangle;
 import model.Shape;
 import model.Size;
-import model.animatorLayersImp.AnimatorLayers;
-import view.LayerViews.NewInteractiveView;
+import model.animatorlayersimp.AnimatorLayers;
+import view.layerviews.NewInteractiveView;
 
 /**
  * Represents a text reader that processes the user inputted text describing the shapes and motions
@@ -37,7 +36,11 @@ public class EditInputReader extends AnimationFileReader implements ReadEdits {
   private final List<Command> commandsAddedByClientTemp;
 
   /**
+   * Represents a way to take in inputs by the user. Uses the existing view and model in order to
+   * get the user modifications into the animation.
    *
+   * @param model is the model for the animation.
+   * @param view is the view for that the program uses.
    */
   public EditInputReader(AnimatorLayers model, NewInteractiveView view) {
     this.model = model;

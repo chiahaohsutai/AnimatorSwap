@@ -1,4 +1,4 @@
-package model.animatorLayersImp;
+package model.animatorlayersimp;
 
 import java.util.ArrayList;
 import java.util.Arrays;

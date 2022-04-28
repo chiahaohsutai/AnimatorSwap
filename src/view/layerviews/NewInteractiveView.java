@@ -1,4 +1,4 @@
-package view.LayerViews;
+package view.layerviews;
 
 import view.InteractiveView;
 

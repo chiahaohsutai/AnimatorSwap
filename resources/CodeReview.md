@@ -21,8 +21,8 @@ which creates tight coupling. The methods use these concrete classes, so if we w
 model or create a new implementation, we are forced to use the existing stand-alone classes. For 
 example, if a method in the model takes in a CartPt, and we want to override the method in the 
 extended model, we are still forced to depend on the CartPt class. A suggestion to alleviate this
-tight coupling is either to use primitives to represent these classes or design an interface that 
-allows for more flexibility.
+tight coupling is either to use primitives to represent these classes or design an interface that
+can be implemented as many times as needed that allows for more flexibility.
 
 ## Implementation Critique
 
@@ -41,7 +41,9 @@ suggestion to fix this issue is to simply reuse just the JPanel displaying the a
 the visual views instead of using extension to inherit this JPanel as we create new views. 
 Another caveat of this use of inheritance is that some subclasses defined new public methods which
 are not included in any interface. Another downside is that some methods returned or required class 
-types instead of interface types, which reduces flexibility in the code. 
+types instead of interface types, which reduces flexibility in the code. To fix this, we would just
+change where concrete classes are used as return or input types to the interface that they belong
+to.
 
 ## Documentation Critique
 

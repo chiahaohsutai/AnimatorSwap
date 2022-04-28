@@ -140,7 +140,7 @@ methods such as ReadRectangleInfo to extract information about adding a rectangl
 extract information about adding a move motion, etc. In the EditInputReader, there are two temp
 lists, one to hold the shapes that the user wishes to add and one to hold the motions that the user
 wishes to add. As the EditInputReader processes the text input by the user, it adds the
-corresponding shape and motion objects to these temporary lists. If all the inputs are valid,
+corresponding shape and motion objects to these temp lists. If all the inputs are valid,
 then the model gets mutated. If a single input is invalid, that means there was an invalid shape or 
 motion addition in the description. When this happens, the temp lists will be emptied and no shapes
 or motions that were entered by the user in the text box will be added. Essentially, the 
@@ -148,9 +148,13 @@ description entered by the user must all be correct in order to add to the curre
 animation. However, this mutation does not occur in the list of shapes and
 commands that hold what is actually going on in the animation. Rather, we added two lists to the 
 model to specifically hold these shapes and motions that the user wishes to add, which is where the
-mutation is occurring. The reason for this is that it allows us to avoid the
-ConcurrentModificationException. Essentially, the team used a Thread as a "timer" to run the 
-animator application. As 
+mutation is occurring. Here is an explanation of how these lists come into play when the 
+animator application is being run. The team uses a Thread to serve as the "timer" of the 
+animation. The program runs by executing the drawing of the panel at a given tick (this is done
+by iterating through the list of shapes and motions stored in the model and drawing them), then the 
+thread "sleeps" for a specified delay and then executes the drawing of the panel at the next tick 
+and so on until the animation ends. The modification that we made to this is that before we are
+redrawing the panel, we check if there are shapes and motions that are stored in the 
 to include all the added shapes and motions. 
 These changes included adding shapes and
 adding motions to the animator model. By changing the model, the shapes and motions will be added

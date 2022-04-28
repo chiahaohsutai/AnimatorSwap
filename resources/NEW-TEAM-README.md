@@ -1,4 +1,6 @@
-### Were we able to implement the new features?
+# Our Implementation of New Features
+
+## Were we able to implement the new features?
 
 Adding the layering to the model was successful, you can find more details about the implementation
 below. The model is able to track the laying on the shapes and likewise transmit the layering
@@ -7,12 +9,11 @@ SVG works because the SVG implementation by the providers is not functional.
 
 Adding the add shape feature to the interactive view was successful, you can find more details
 about the implementation below. Here is a very high level overview. The new GUI takes in text and 
-passes it to the controller. The controller then processes the string and makes the corresponding
-changes to the model, which leads to the shapes and motions being added to the currently playing
+passes it to the controller. The controller then processes the string and , which leads to the shapes and motions being added to the currently playing
 animation. The controller uses an object called EditInputReader that functions similarly to the 
 AnimationFileReader to process the input.
 
-### Challenges or issues with the code.
+## Challenges or issues with the code.
 
 There were some challenges with the code. The code was not 100% functional. When we tried running
 the program we encounter a very buggy behavior where the speed was set to a default even if declared
@@ -25,7 +26,7 @@ Another issue that should be pointed out is that shapes don't have a start tick 
 once a shape is added, it will appear in the animation even if declared otherwise (i.e. if the 
 current tick is 0 and the shape appears in tick 10, the shape will be visible at tick 0).
 
-### Changes to the AnimationFileReader and Builder.
+## Changes to the AnimationFileReader and Builder.
 
 We added a setLayer command to the Animation file reader. The animation will set the layer of a
 shape using the following command: "setLayer shapeID layerNumber". Where the shape ID is shapes id
@@ -46,7 +47,7 @@ implementation. The new builder class uses the AnimationLayers interface, which 
 functionalities as the previous implementation as well as the new layering feature. Hence, all the
 previously existing functionalities (reading with no laying info) still work. 
 
-### How was the Layering Implemented.
+## How was the Layering Implemented.
 
 We decided to use a square pattern. We created a new extending interface and had a new class
 implement this new interface and extend the previous implementation of the animator. This allowed us
@@ -60,7 +61,7 @@ The default layer for all shapes is set to layer 1. This means that when a shape
 wants to change the layer, the user must explicitly set the layer user the setLayer method in the 
 interface.
 
-### Editing the Text and SVG.
+## Editing the Text and SVG.
 
 No new implementation for the SVG was created. We just override the function from the model, so that
 the SVG class receives the shapes according to the laying order. Since, SVG format layers shapes
@@ -69,11 +70,11 @@ possible. For the text view, also did not change the existing implementation. Th
 implementation delegates the formatting of the text to the model. Hence, we just re-implemented the 
 method that originally printed the text, and added layering to it. 
 
-### Editing the Visual View and Supporting Layering Feature.
+## Editing the Visual View to Support Layering Shapes.
 
 The ShapePanel (the JPanel where the actual animation takes place) is housed in the very
 first view that was required for the Easy Animator application, which is the AnimatorGraphicsView 
-(the visual view). We edited the ShapePanel to accommodate layering. ________________
+(the visual view). We edited the ShapePanel to accommodate layering. 
 
 Just by editing the ShapePanel, all visual views will be able to support the layering feature.
 This is because in this code, each new view extends the previous version. For example, the 
@@ -83,7 +84,7 @@ displays an animation in AnimatorGraphicsView is inherited by the Interactive An
 The same logic can be applied to how the new interactive view with the ability to add shapes to the
 currently playing animation will support layering.
 
-### Editing the Interactive View.
+## Editing the Interactive View to support Adding Shapes and Layering.
 
 The assignment required us to implement the additional features of layering and adding shapes to 
 the currently playing animation. Layering is accommodated by this new interactive view according to
@@ -99,9 +100,8 @@ view, but with additional features. In our new interface and class, we construct
 additional components and implemented new methods that are required to accomplish the new feature. 
 In the GUI, we added a text box, where the user inputs the description of shapes and motions to be 
 added, a button, which processes the edits inputted by the user in the text box when clicked, 
-and a label, that notifies the user if the edits were added to the playing animation were 
-successful or not (not successful meaning that the description that the user inputted contained 
-errors (i.e. incorrect formatting, missing values)). The user can enter more than one edit into the 
+and a label, that notifies the user if the user inputted contains errors (i.e. incorrect formatting,
+missing values, complete bogus input). The user can enter more than one edit into the 
 text box. For example, the user may enter the description to add a shape and transform the shape
 three times into the text box and then click the "Add Edits" button to add all the shapes and 
 transformations to the playing animation. The view interface had two new methods, one to 

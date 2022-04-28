@@ -80,6 +80,7 @@ public class NewInteractiveVisualController extends InteractiveVisualController
           if (((AnimatorLayers)model).checkCommandQueue()) {
             List<Command> cmds = ((AnimatorLayers)model).getCommandsQueue();
             cmds.forEach(c -> model.addCommand(c.getShape(), c));
+            ((AnimatorLayer)model).clearCommandsQueue();
           }
           view.updatePanel(currentTick);
           view.refresh();

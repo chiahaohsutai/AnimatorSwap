@@ -231,7 +231,7 @@ public class Command {
       Command other = (Command) o;
       return shape == other.shape && startTick == other.startTick && endTick == other.endTick &&
               startSize.equals(other.startSize) && endSize.equals(other.endSize) && startLoc.
-              equals(other.startLoc) && endColor.equals(other.startLoc) && startColor.
+              equals(other.startLoc) && endColor.equals(other.startColor) && startColor.
               equals(other.startColor) && endColor.equals(other.endColor);
     }
     return false;

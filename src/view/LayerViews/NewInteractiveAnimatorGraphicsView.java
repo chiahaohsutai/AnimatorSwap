@@ -3,6 +3,9 @@ package view.LayerViews;
 import java.awt.Dimension;
 import java.awt.BorderLayout;
 import java.awt.event.ActionListener;
+import java.util.Comparator;
+import java.util.List;
+
 import javax.swing.JTextArea;
 import javax.swing.JButton;
 import javax.swing.JPanel;
@@ -11,6 +14,8 @@ import javax.swing.BorderFactory;
 import javax.swing.JLabel;
 
 import model.AnimatorModelState;
+import model.Shape;
+import model.animatorLayersImp.AnimatorLayersState;
 import view.InteractiveAnimatorGraphicsView;
 
 /**
@@ -32,7 +37,7 @@ public class NewInteractiveAnimatorGraphicsView extends InteractiveAnimatorGraph
    *
    * @param model Model
    */
-  public NewInteractiveAnimatorGraphicsView(AnimatorModelState model) {
+  public NewInteractiveAnimatorGraphicsView(AnimatorLayersState model) {
     super(model);
 
     super.setSize(new Dimension(1500, 600));
@@ -74,5 +79,14 @@ public class NewInteractiveAnimatorGraphicsView extends InteractiveAnimatorGraph
   @Override
   public void setEditStatusLabel(String update) {
     editStatusLabel.setText(update);
+  }
+
+  @Override
+  public void updatePanel(double tick) {
+    List<Shape> shapes = this.model.getShapesAtTick(tick);
+    AnimatorLayersState m = (AnimatorLayersState)model;
+    shapes.sort(Comparator.comparingInt(s -> m.getShapeLayer(s.getName())));
+    shapePanel.takeShapeList(shapes);
+    currentTick.setText("Current tick: " + (int) tick);
   }
 }

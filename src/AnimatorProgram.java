@@ -14,6 +14,7 @@ import model.AnimatorModel;
 import model.SimpleAnimatorModel;
 import io.AnimationFileReader;
 import model.animatorLayersImp.AnimatorLayers;
+import model.animatorLayersImp.AnimatorLayersState;
 import view.AnimatorGraphicsView;
 import view.AnimatorTextView;
 import view.AnimatorView;
@@ -82,7 +83,7 @@ public class AnimatorProgram {
 
             case "visual":
               try {
-                view = new NewVisualView((AnimatorLayers)model);
+                view = new NewVisualView((AnimatorLayersState)model);
               } catch (IllegalArgumentException e) {
                 displayErrorMsg("Model is null");
               }
@@ -90,7 +91,7 @@ public class AnimatorProgram {
 
             case "interactive":
               try {
-                view = new NewInteractiveAnimatorGraphicsView(model);
+                view = new NewInteractiveAnimatorGraphicsView((AnimatorLayersState)model);
               } catch (IllegalArgumentException e) {
                 displayErrorMsg("Model is null");
               }

@@ -1,4 +1,3 @@
-import org.junit.Assert;
 import org.junit.Test;
 
 import java.io.FileNotFoundException;
@@ -27,6 +26,8 @@ import view.SVGView;
 
 import static org.junit.Assert.assertArrayEquals;
 import static org.junit.Assert.assertEquals;
+import static org.testng.AssertJUnit.assertFalse;
+import static org.testng.AssertJUnit.assertTrue;
 
 /**
  * To test the functionality of layering in the animator. Checks that layering works in the model
@@ -267,6 +268,105 @@ public class AnimatorLayeringTests {
     assertEquals(2, animator.getShapesAtLayer(1).size());
     animator.removeShape(ellipse0);
     assertEquals(1, animator.getShapesAtLayer(1).size());
+  }
+
+  @Test(expected = IllegalArgumentException.class)
+  public void testQueueShapesNull() {
+    initAnimator();
+    animator.queueShapes(null);
+  }
+
+  @Test(expected = IllegalArgumentException.class)
+  public void testQueueShapesHasNulls() {
+    initAnimator();
+    animator.queueShapes(ellipse0, null);
+  }
+
+  @Test(expected = IllegalArgumentException.class)
+  public void testQueueRepeatedNames() {
+    initAnimator();
+    Shape ellipse14 = new Elipse("pancho", new CartPt(10, 10),
+            new Size(10, 10), new Color(12, 12, 14));
+    animator.queueShapes(ellipse14, ellipse0);
+  }
+
+  @Test
+  public void testQueueShapes() {
+    initAnimator();
+    animator.queueShapes(ellipse0, ellipse1);
+    assertArrayEquals(new Shape[] {ellipse0, ellipse1}, animator.getShapesQueue().toArray());
+  }
+
+  @Test
+  public void testClearQueueShapes() {
+    initAnimator();
+    animator.queueShapes(ellipse0, ellipse1);
+    assertEquals(2, animator.getShapesQueue().size());
+    animator.clearShapesQueue();
+    assertEquals(0, animator.getShapesQueue().size());
+  }
+
+  @Test(expected = IllegalArgumentException.class)
+  public void testNullCommand() {
+    initAnimator();
+    animator.queueCommands(null);
+  }
+
+  @Test(expected = IllegalArgumentException.class)
+  public void testNullCommands() {
+    initAnimator();
+    animator.queueCommands(new Command(ellipse0, 1, 12, new CartPt(12,12),
+            new Size(10, 10),new Color(13, 14, 17)), null);
+  }
+
+  @Test
+  public void testQueueingCommands() {
+    initAnimator();
+    animator.queueShapes(ellipse0, ellipse1);
+    Command c1 = new Command(ellipse0, 1, 12, new CartPt(12,12),
+            new Size(10, 10), new Color(10, 10, 10));
+    Command c2 = new Command(ellipse1, 1, 14, new CartPt(10, 15),
+            new Size(13, 60), new Color(19, 19, 10));
+    animator.queueCommands(c1);
+    Command copy = animator.getCommandsQueue().get(0);
+    assertEquals(c1.getEndTime(), copy.getEndTime(), 0.001);
+    assertEquals(c1.getStartTime(), copy.getStartTime(), 0.001);
+    assertEquals(c1.getShape(), copy.getShape());
+    assertEquals(c1.getStartColor(), copy.getStartColor());
+    assertEquals(c1.getEndColor(), copy.getEndColor());
+    assertEquals(c1.getEndLoc(), copy.getEndLoc());
+    assertEquals(c1.getStartLoc(), copy.getStartLoc());
+  }
+
+  @Test
+  public void testClearCommands() {
+    initAnimator();
+    animator.queueShapes(ellipse0, ellipse1);
+    Command c1 = new Command(ellipse0, 1, 12, new CartPt(12,12),
+            new Size(10, 10), new Color(10, 10, 10));
+    Command c2 = new Command(ellipse1, 1, 14, new CartPt(10, 15),
+            new Size(13, 60), new Color(19, 19, 10));
+    animator.queueCommands(c1, c2);
+    assertEquals(2, animator.getCommandsQueue().size());
+    animator.clearCommandsQueue();
+    assertEquals(0, animator.getCommandsQueue().size());
+  }
+
+  @Test
+  public void testCheckQueue() {
+    initAnimator();
+    animator.queueShapes(ellipse0, ellipse1);
+    Command c1 = new Command(ellipse0, 1, 12, new CartPt(12,12),
+            new Size(10, 10), new Color(10, 10, 10));
+    Command c2 = new Command(ellipse1, 1, 14, new CartPt(10, 15),
+            new Size(13, 60), new Color(19, 19, 10));
+    animator.queueCommands(c1, c2);
+    assertTrue(animator.checkCommandQueue());
+    assertTrue(animator.checkShapeQueue());
+    animator.clearCommandsQueue();
+    animator.clearShapesQueue();
+    assertFalse(animator.checkCommandQueue());
+    assertFalse(animator.checkShapeQueue());
   }
 
   //////// TEST FOR THE SVG ////////

@@ -147,7 +147,8 @@ public class AnimatorLayer extends SimpleAnimatorModel implements AnimatorLayers
 
   @Override
   public void queueShapes(Shape... shapes) {
-    if (Arrays.stream(shapes).anyMatch(Objects::isNull)) {
+    // validation.
+    if (Objects.isNull(shapes) || Arrays.stream(shapes).anyMatch(Objects::isNull)) {
       throw new IllegalArgumentException("Shapes cannot be null");
     }
     List<String> names = this.shapes.stream().map(Shape::getName).collect(Collectors.toList());
@@ -155,11 +156,23 @@ public class AnimatorLayer extends SimpleAnimatorModel implements AnimatorLayers
       throw new IllegalArgumentException("At least one shape has the same name as an existing " +
               "shape in the animator.");
     }
+    List<String> addedNames = Arrays.stream(shapes).map(Shape::getName)
+            .collect(Collectors.toList());
+    for (int i = 0; i < addedNames.size(); i += 1) {
+      String currName = addedNames.get(i);
+      if (Arrays.stream(shapes).skip(i + 1).anyMatch(s -> s.getName().equals(currName))) {
+        throw new IllegalArgumentException("There exists at least one shape in the queue with" +
+                "a repeated name");
+      }
+    }
     newShapes.addAll(Arrays.asList(shapes));
   }
 
   @Override
   public void queueCommands(Command... commands) {
+    if (Objects.isNull(commands)) {
+      throw new IllegalArgumentException("The command cannot be null");
+    }
     if (Arrays.stream(commands).anyMatch(Objects::isNull)) {
       throw new IllegalArgumentException("Commands cannot be null");
     }
